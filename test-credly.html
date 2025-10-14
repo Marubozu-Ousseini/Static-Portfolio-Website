@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credly API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        .container {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .error {
+            background: #4a1a1a;
+            border: 1px solid #ff6b6b;
+            color: #ff6b6b;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .success {
+            background: #1a4a1a;
+            border: 1px solid #4ecdc4;
+            color: #4ecdc4;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .badge {
+            border: 1px solid #333;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background: #3a3a3a;
+        }
+        .badge img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-right: 15px;
+            float: left;
+        }
+        .badge-info {
+            overflow: hidden;
+        }
+        button {
+            background: #00d4ff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #4ecdc4;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background: #333;
+            color: #fff;
+        }
+        pre {
+            background: #000;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Credly API Test Tool</h1>
+        <p>This tool helps you test your Credly profile and troubleshoot API issues.</p>
+        
+        <div>
+            <label for="userId">Credly User ID:</label>
+            <input type="text" id="userId" value="ousseini-oumarou.fa8d6a81" placeholder="Enter your Credly User ID">
+            <button onclick="testCredlyAPI()">Test API</button>
+        </div>
+        
+        <div id="results"></div>
+    </div>
+
+    <div class="container">
+        <h2>Instructions</h2>
+        <ol>
+            <li>Make sure your Credly profile is public</li>
+            <li>Enter your Credly User ID (found in your profile URL)</li>
+            <li>Click "Test API" to check if your badges can be fetched</li>
+            <li>If successful, you'll see your badges listed below</li>
+            <li>If it fails, you can use manual certifications as a fallback</li>
+        </ol>
+        
+        <h3>Your Credly Profile URL should be:</h3>
+        <p id="profileUrl">https://www.credly.com/users/YOUR_USER_ID/badges</p>
+        
+        <h3>API Endpoint being tested:</h3>
+        <p id="apiUrl">https://www.credly.com/users/YOUR_USER_ID/badges.json</p>
+    </div>
+
+    <script>
+        function updateUrls() {
+            const userId = document.getElementById('userId').value;
+            document.getElementById('profileUrl').textContent = `https://www.credly.com/users/${userId}/badges`;
+            document.getElementById('apiUrl').textContent = `https://www.credly.com/users/${userId}/badges.json`;
+        }
+        
+        document.getElementById('userId').addEventListener('input', updateUrls);
+        updateUrls();
+
+        async function testCredlyAPI() {
+            const userId = document.getElementById('userId').value;
+            const resultsDiv = document.getElementById('results');
+            
+            if (!userId) {
+                resultsDiv.innerHTML = '<div class="error">Please enter a Credly User ID</div>';
+                return;
+            }
+            
+            resultsDiv.innerHTML = '<div>Testing API... Please wait.</div>';
+            
+            const credlyUrl = `https://www.credly.com/users/${userId}/badges.json`;
+            const proxyServices = [
+                `https://api.allorigins.win/get?url=${encodeURIComponent(credlyUrl)}`,
+                `https://cors-anywhere.herokuapp.com/${credlyUrl}`,
+                `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(credlyUrl)}`
+            ];
+            
+            let success = false;
+            let badges = null;
+            let errorMessage = '';
+            
+            for (let i = 0; i < proxyServices.length; i++) {
+                try {
+                    console.log(`Testing proxy ${i + 1}:`, proxyServices[i]);
+                    
+                    const response = await fetch(proxyServices[i], {
+                        method: 'GET',
+                        headers: { 'Accept': 'application/json' },
+                        signal: AbortSignal.timeout(10000)
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    // Parse response
+                    if (data.contents) {
+                        badges = JSON.parse(data.contents);
+                    } else if (Array.isArray(data)) {
+                        badges = data;
+                    } else if (data.data) {
+                        badges = data.data;
+                    } else {
+                        badges = data;
+                    }
+                    
+                    if (Array.isArray(badges)) {
+                        success = true;
+                        break;
+                    } else {
+                        throw new Error('Invalid response format');
+                    }
+                    
+                } catch (error) {
+                    console.warn(`Proxy ${i + 1} failed:`, error.message);
+                    errorMessage += `Proxy ${i + 1}: ${error.message}\n`;
+                    continue;
+                }
+            }
+            
+            if (success && badges) {
+                displayResults(badges, true);
+            } else {
+                displayError(errorMessage);
+            }
+        }
+        
+        function displayResults(badges, isSuccess) {
+            const resultsDiv = document.getElementById('results');
+            
+            if (isSuccess) {
+                let html = `
+                    <div class="success">
+                        <h3>✅ Success! Found ${badges.length} certification(s)</h3>
+                        <p>Your Credly profile is accessible and contains badges.</p>
+                    </div>
+                `;
+                
+                badges.forEach((badge, index) => {
+                    const issuedDate = badge.issued_at_date ? 
+                        new Date(badge.issued_at_date).toLocaleDateString() : 'Date not available';
+                    
+                    html += `
+                        <div class="badge">
+                            <img src="${badge.image_url}" alt="${badge.badge_template?.name || 'Badge'}">
+                            <div class="badge-info">
+                                <h4>${badge.badge_template?.name || 'Unknown Badge'}</h4>
+                                <p><strong>Issued:</strong> ${issuedDate}</p>
+                                <p><strong>Badge ID:</strong> ${badge.id}</p>
+                                <a href="https://www.credly.com/badges/${badge.id}/public_url" target="_blank" style="color: #00d4ff;">View on Credly</a>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                    <div class="success">
+                        <h3>Next Steps:</h3>
+                        <p>Your Credly integration should work on your portfolio website. If you're still seeing errors, try refreshing the page or check your browser's console for additional details.</p>
+                    </div>
+                `;
+                
+                resultsDiv.innerHTML = html;
+            }
+        }
+        
+        function displayError(errorMessage) {
+            const resultsDiv = document.getElementById('results');
+            
+            resultsDiv.innerHTML = `
+                <div class="error">
+                    <h3>❌ API Test Failed</h3>
+                    <p><strong>Error Details:</strong></p>
+                    <pre>${errorMessage}</pre>
+                    <h4>Possible Solutions:</h4>
+                    <ul>
+                        <li>Verify your Credly User ID is correct</li>
+                        <li>Ensure your Credly profile is public</li>
+                        <li>Check your internet connection</li>
+                        <li>Try again in a few minutes (temporary server issues)</li>
+                        <li>Use manual certifications as a fallback</li>
+                    </ul>
+                    <h4>To use manual certifications:</h4>
+                    <ol>
+                        <li>Open your <code>config.js</code> file</li>
+                        <li>Set <code>useManualCertifications: true</code></li>
+                        <li>Add your certification details to <code>manualCertifications</code> array</li>
+                        <li>Save and refresh your portfolio website</li>
+                    </ol>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
+
