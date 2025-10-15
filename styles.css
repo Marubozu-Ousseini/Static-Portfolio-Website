@@ -401,7 +401,7 @@ section {
 /* AWS Certifications background */
 .certifications {
     position: relative;
-    background: linear-gradient(135deg, rgba(3,10,14,0.6), rgba(10,15,20,0.6)), url('./images/aws-bg.svg') no-repeat center center;
+    background: linear-gradient(135deg, rgba(3,10,14,0.6), rgba(10,15,20,0.6)), url('https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/AWS%20Certifications.png?raw=true') no-repeat center center;
     background-size: cover;
     color: var(--text-primary);
 }
