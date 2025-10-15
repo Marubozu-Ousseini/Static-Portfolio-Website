@@ -585,10 +585,34 @@ function updateSocialLinks() {
     
     if (siteContent.footer && siteContent.footer.socialLinks) {
         siteContent.footer.socialLinks.forEach((link, index) => {
-            if (socialLinks[index]) {
-                socialLinks[index].href = link.url;
-                socialLinks[index].innerHTML = `<i class="${link.icon}"></i>`;
+            const anchor = socialLinks[index];
+            if (!anchor) return;
+
+            // Build a safe URL: ensure protocol exists and encode characters
+            let url = (link.url || '').trim();
+            if (!url) {
+                anchor.href = '#';
+            } else {
+                // If missing scheme, prepend https://
+                if (!/^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url)) {
+                    url = 'https://' + url.replace(/^\/+/, '');
+                }
+
+                // Try to create a URL object to normalize; fall back to encodeURI
+                try {
+                    url = new URL(url).toString();
+                } catch (err) {
+                    url = encodeURI(url);
+                }
+
+                anchor.href = url;
             }
+
+            // Set accessible and safe attributes
+            anchor.innerHTML = `<i class="${link.icon}"></i>`;
+            anchor.setAttribute('target', '_blank');
+            anchor.setAttribute('rel', 'noopener noreferrer');
+            if (link.platform) anchor.setAttribute('aria-label', link.platform);
         });
     }
 }

@@ -19,10 +19,11 @@ const siteContent = {
         subtitle: "Transforming businesses with cutting-edge cloud solutions and AI technologies",
         description: "I am a highly motivated Cloud and AI Consultant, uniquely positioned with a strong foundation in both Cloud computing and Artificial Intelligence. My expertise is validated by industry leading certifications. This robust skill set, combined with my background in Cryptocurrency, Web3, and Blockchain, allows me to architect and deploy innovative, scalable, and secure cloud-native solutions, with a particular focus on leveraging advanced AI capabilities to drive transformative business outcomes. I am dedicated to pushing the boundaries of technology to create intelligent systems that redefine possibilities.",
         email: "meandyougtn@gmail.com",
-        phone: "+237 6 9995 7878",
+        phone: "+237 6 99 95 78 78",
         linkedin: "linkedin.com/in/marubozu",
-        github: "github.com/Marubozu-Ousseini",
-        twitter: "twitter.com/O'Marubozu Sensei",
+    github: "https://github.com/Marubozu-Ousseini",
+    linkedin: "https://www.linkedin.com/in/marubozu",
+    twitter: "https://twitter.com/O%27Marubozu%20Sensei",
         
         // Profile Picture Configuration
         // Option 1: Use a URL to your profile picture
@@ -168,7 +169,7 @@ const siteContent = {
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/Statistique.png?raw=true",
             links: {
                 live: "#",
-                github: "https://github.com/Marubozu-Ousseini/NBA-statistics-pipeline-using-AWS "
+                github: "https://github.com/Marubozu-Ousseini/NBA-statistics-pipeline-using-AWS"
             }
         },
         {
@@ -224,6 +225,17 @@ const siteContent = {
             links: {
                 live: "#",
                 github: "https://github.com/Marubozu-Ousseini/NCAA-GameHighlights"
+            }
+        },
+        {
+            id: 2,
+            title: "AI-Powered Analytics Platform",
+            description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
+            technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
+            image: "brain", // Font Awesome brain icon for AI
+            links: {
+                live: "#",
+                github: "#"
             }
         },
         {
@@ -311,9 +323,9 @@ const siteContent = {
     footer: {
         copyright: "© 2025 Ousseini Oumarou. All rights reserved.",
         socialLinks: [
-            { platform: "github", url: "#", icon: "fab fa-github" },
-            { platform: "linkedin", url: "#", icon: "fab fa-linkedin" },
-            { platform: "twitter", url: "#", icon: "fab fa-twitter" }
+            { platform: "github", url: "https://github.com/Marubozu-Ousseini", icon: "fab fa-github" },
+            { platform: "linkedin", url: "https://www.linkedin.com/in/marubozu", icon: "fab fa-linkedin" },
+                { platform: "twitter", url: "https://twitter.com/O%27Marubozu%20Sensei", icon: "fab fa-twitter" }
         ]
     },
 

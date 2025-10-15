@@ -516,7 +516,23 @@ section {
 
 /* Projects Section */
 .projects {
-    background: var(--surface-color);
+    position: relative;
+    background: linear-gradient(135deg, rgba(4,8,12,0.6), rgba(8,12,18,0.6)), url('https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/projects-bg.jpg?raw=true') no-repeat center center;
+    background-size: cover;
+    color: var(--text-primary);
+}
+
+.projects::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+    pointer-events: none;
+}
+
+.projects .container {
+    position: relative; /* keep content above overlay */
+    z-index: 2;
 }
 
 .projects-grid {
@@ -673,7 +689,23 @@ section {
 
 /* Contact Section */
 .contact {
-    background: var(--surface-color);
+    position: relative;
+    background: linear-gradient(135deg, rgba(4,8,12,0.6), rgba(8,12,18,0.6)), url('https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/contact-bg.jpg?raw=true') no-repeat center center;
+    background-size: cover;
+    color: var(--text-primary);
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+    pointer-events: none;
+}
+
+.contact .container {
+    position: relative; /* keep content above overlay */
+    z-index: 2;
 }
 
 .contact-content {
