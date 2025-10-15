@@ -83,6 +83,9 @@ function loadDynamicContent() {
     // Load profile picture
     loadProfilePicture();
     
+    // Load and verify background image
+    loadBackgroundImage();
+    
     // Load statistics
     updateElement('years-experience', siteContent.stats.yearsExperience);
     updateElement('projects-completed', siteContent.stats.projectsCompleted);
@@ -131,9 +134,16 @@ function createProjectCard(project) {
     const card = document.createElement('div');
     card.className = 'project-card fade-in';
     
+    // Determine if it's an icon or image URL
+    const isImageUrl = project.image && (project.image.startsWith('http') || project.image.startsWith('/') || project.image.includes('.'));
+    
+    const imageContent = isImageUrl 
+        ? `<img src="${project.image}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;">`
+        : `<i class="fas fa-${project.image || 'project-diagram'}"></i>`;
+    
     card.innerHTML = `
         <div class="project-image">
-            <i class="fas fa-${project.image || 'project-diagram'}"></i>
+            ${imageContent}
         </div>
         <div class="project-content">
             <h3 class="project-title">${project.title}</h3>
@@ -534,6 +544,37 @@ function loadProfilePicture() {
             defaultIcon.style.display = 'block';
         }
     }
+}
+
+/**
+ * Load and verify background image
+ */
+function loadBackgroundImage() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    // Test if background image loads
+    const testImage = new Image();
+    
+    testImage.onload = function() {
+        console.log('Background image loaded successfully');
+        // Ensure the background is visible
+        hero.style.background = `
+            linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(26, 26, 26, 0.6) 100%),
+            url('./images/cloud-ai-background.jpg') no-repeat center center
+        `;
+        hero.style.backgroundSize = 'cover';
+        hero.style.backgroundAttachment = 'fixed';
+    };
+    
+    testImage.onerror = function() {
+        console.warn('Background image failed to load, using fallback');
+        // Fallback to gradient background
+        hero.style.background = 'linear-gradient(135deg, var(--background-color) 0%, var(--surface-color) 100%)';
+    };
+    
+    // Test the image
+    testImage.src = './images/cloud-ai-background.jpg';
 }
 
 /**

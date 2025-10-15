@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Image Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: white;
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+        
+        .hero-test {
+            height: 400px;
+            background: 
+                linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(26, 26, 26, 0.6) 100%),
+                url('./images/cloud-ai-background.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .hero-test-alt {
+            height: 400px;
+            background: url('./images/cloud-ai-background.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .hero-test-alt::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
+            border-radius: 8px;
+        }
+        
+        .hero-test-alt h2 {
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        
+        .image-test {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .image-test img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .success {
+            background: rgba(0, 255, 0, 0.2);
+            border: 1px solid #00ff00;
+        }
+        
+        .error {
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid #ff0000;
+        }
+        
+        .info {
+            background: rgba(0, 150, 255, 0.2);
+            border: 1px solid #0096ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Background Image Test</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Direct Image Display</h2>
+        <div class="image-test">
+            <img src="./images/cloud-ai-background.jpg" alt="Background Image Test" onload="showStatus('image-success')" onerror="showStatus('image-error')">
+        </div>
+        <div id="image-status"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: CSS Background with Overlay</h2>
+        <div class="hero-test">
+            <h2>Background with CSS Overlay</h2>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 3: CSS Background with ::before Overlay</h2>
+        <div class="hero-test-alt">
+            <h2>Background with ::before Overlay</h2>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>File Information</h2>
+        <div id="file-info"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Console Output</h2>
+        <div id="console-output"></div>
+    </div>
+
+    <script>
+        function showStatus(type) {
+            const statusDiv = document.getElementById('image-status');
+            if (type === 'image-success') {
+                statusDiv.innerHTML = '<div class="status success">✅ Image loaded successfully!</div>';
+            } else if (type === 'image-error') {
+                statusDiv.innerHTML = '<div class="status error">❌ Image failed to load!</div>';
+            }
+        }
+        
+        function logToConsole(message) {
+            const consoleDiv = document.getElementById('console-output');
+            consoleDiv.innerHTML += '<div class="status info">' + message + '</div>';
+        }
+        
+        // Test image loading
+        const testImage = new Image();
+        testImage.onload = function() {
+            logToConsole('✅ JavaScript image load test: SUCCESS');
+            logToConsole('Image dimensions: ' + testImage.width + ' x ' + testImage.height);
+        };
+        testImage.onerror = function() {
+            logToConsole('❌ JavaScript image load test: FAILED');
+        };
+        testImage.src = './images/cloud-ai-background.jpg';
+        
+        // Test CSS background
+        const heroTest = document.querySelector('.hero-test');
+        const computedStyle = window.getComputedStyle(heroTest);
+        const backgroundImage = computedStyle.backgroundImage;
+        
+        if (backgroundImage && backgroundImage !== 'none') {
+            logToConsole('✅ CSS background-image property: SET');
+            logToConsole('Background: ' + backgroundImage);
+        } else {
+            logToConsole('❌ CSS background-image property: NOT SET');
+        }
+        
+        logToConsole('Current URL: ' + window.location.href);
+        logToConsole('Image path: ./images/cloud-ai-background.jpg');
+    </script>
+</body>
+</html>

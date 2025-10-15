@@ -143,7 +143,7 @@ const siteContent = {
             title: "Cloud Migration Strategy",
             description: "Led the migration of a legacy on-premises system to AWS, reducing infrastructure costs by 40% and improving scalability. Implemented automated CI/CD pipelines and containerized applications using Docker and Kubernetes.",
             technologies: ["AWS", "Docker", "Kubernetes", "Terraform", "Jenkins"],
-            image: "cloud-migration", // Will use default icon if not specified
+            image: "cloud", // Font Awesome cloud icon
             links: {
                 live: "#", // Replace with actual project URL
                 github: "#" // Replace with GitHub repository URL
@@ -154,7 +154,7 @@ const siteContent = {
             title: "AI-Powered Analytics Platform",
             description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
             technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
-            image: "ai-analytics",
+            image: "brain", // Font Awesome brain icon for AI
             links: {
                 live: "#",
                 github: "#"
