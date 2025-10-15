@@ -367,8 +367,8 @@ function createCertificationCard(badge) {
             month: 'long'
         }) : 'Date not available';
     
-    // Construct the public URL
-    const publicUrl = `https://www.credly.com/badges/${badge.id}/public_url`;
+    // Get the public URL from the badge data or construct it
+    const publicUrl = badge.public_url || `https://www.credly.com/badges/${badge.id}`;
     
     // Get certification name and description
     const certName = badge.badge_template ? badge.badge_template.name : badge.name;
@@ -383,7 +383,7 @@ function createCertificationCard(badge) {
         ${certDescription ? `<p class="certification-description">${certDescription}</p>` : ''}
         <a href="${publicUrl}" class="certification-link" target="_blank" rel="noopener">
             <i class="fas fa-external-link-alt"></i>
-            View Credly Badge
+            Verified Badge
         </a>
     `;
     
@@ -408,7 +408,7 @@ function initializeContactForm() {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
 
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         // Get form data
@@ -424,12 +424,49 @@ function initializeContactForm() {
             return;
         }
         
-        // Note: This is a static form. For production use, you'll need to implement
-        // a backend service or use a service like Formspree, Netlify Forms, etc.
-        alert(siteContent.contact.successMessage);
+        // Show loading state
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
         
-        // Reset form
-        contactForm.reset();
+        try {
+            // Prepare data for Formspree
+            const data = {
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                _replyto: email,
+                _subject: `Portfolio Contact: ${subject}`,
+                _next: window.location.href
+            };
+            
+            // Send to Formspree
+            const response = await fetch(siteContent.contact.submitUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            
+            if (response.ok) {
+                alert(siteContent.contact.successMessage);
+                contactForm.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+            
+        } catch (error) {
+            console.error('Contact form error:', error);
+            alert(siteContent.contact.errorMessage);
+        } finally {
+            // Reset button state
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }
     });
 }
 
