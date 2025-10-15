@@ -398,6 +398,27 @@ section {
     margin-top: var(--spacing-2xl);
 }
 
+/* AWS Certifications background */
+.certifications {
+    position: relative;
+    background: linear-gradient(135deg, rgba(3,10,14,0.6), rgba(10,15,20,0.6)), url('./images/aws-bg.svg') no-repeat center center;
+    background-size: cover;
+    color: var(--text-primary);
+}
+
+.certifications::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6));
+    pointer-events: none;
+}
+
+.certifications .container {
+    position: relative; /* keep content above overlay */
+    z-index: 2;
+}
+
 .certification-card {
     background: var(--surface-color);
     border-radius: var(--radius-lg);
