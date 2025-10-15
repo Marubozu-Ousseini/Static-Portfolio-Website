@@ -21,10 +21,10 @@ const siteContent = {
         email: "meandyougtn@gmail.com",
         phone: "+237 6 99 95 78 78",
         linkedin: "linkedin.com/in/marubozu",
-    github: "https://github.com/Marubozu-Ousseini",
-    linkedin: "https://www.linkedin.com/in/marubozu",
-    twitter: "https://twitter.com/O%27Marubozu%20Sensei",
-        
+        github: "https://github.com/Marubozu-Ousseini",
+        linkedin: "https://www.linkedin.com/in/marubozu",
+        twitter: "https://twitter.com/O%27Marubozu%20Sensei",
+            
         // Profile Picture Configuration
         // Option 1: Use a URL to your profile picture
         profilePicture: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/profile%20pic.jpg?raw=true", // Replace with your image URL, e.g., "https://example.com/your-photo.jpg"
@@ -325,7 +325,7 @@ const siteContent = {
         socialLinks: [
             { platform: "github", url: "https://github.com/Marubozu-Ousseini", icon: "fab fa-github" },
             { platform: "linkedin", url: "https://www.linkedin.com/in/marubozu", icon: "fab fa-linkedin" },
-                { platform: "twitter", url: "https://twitter.com/O%27Marubozu%20Sensei", icon: "fab fa-twitter" }
+            { platform: "twitter", url: "https://twitter.com/O%27Marubozu%20Sensei", icon: "fab fa-twitter" }
         ]
     },
 
