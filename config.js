@@ -165,7 +165,7 @@ const siteContent = {
             title: "NBA statistics pipeline using AWS",
             description: "This project creates an automated data pipeline that collects and stores NBA team statistics using AWS services. It demonstrates core DevOps principles including cloud storage, API integration, automated data collection, and infrastructure as code.",
             technologies: ["- Python 3.x", "AWS DynamoDB", "AWS Lambda", "AWS CloudWatch", "SportsData.io API", "Boto3 (AWS SDK)", "Python JSON Logger"],
-            image: "/Users/virus_237/projects/static Portfolio website/images/statistic NBA.png",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/Statistique.png?raw=true",
             links: {
                 live: "#",
                 github: "https://github.com/Marubozu-Ousseini/NBA-statistics-pipeline-using-AWS "
