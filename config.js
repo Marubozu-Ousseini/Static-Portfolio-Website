@@ -173,6 +173,61 @@ const siteContent = {
         },
         {
             id: 4,
+            title: "NBA Game Day Notifications / Sports Alerts System",
+            description: "This project is an alert system that sends real-time NBA game day score notifications to subscribed users via SMS/Email. It leverages Amazon SNS, AWS Lambda and Python, Amazon EvenBridge and NBA APIs to provide sports fans with up-to-date game information. The project demonstrates cloud computing principles and efficient notification mechanisms.",
+            technologies: ["AWS", "Amazon SNS", "AWS Lambda", "Amazon EventBridge", "Python 3.x", "SportsData.io API", "Boto3 (AWS SDK)", "Twilio (for SMS)", "SMTP (for Email)"],
+            image: "https://github.com/user-attachments/assets/5e19635e-0685-4c07-9601-330f7d1231f9", // Font Awesome brain icon for AI
+            links: {
+                live: "#",
+                github: "https://github.com/Marubozu-Ousseini/30-Day-DevOps-Challenge_Day02game-day"
+            }
+        },
+        {
+            id: 2,
+            title: "AI-Powered Analytics Platform",
+            description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
+            technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
+            image: "brain", // Font Awesome brain icon for AI
+            links: {
+                live: "#",
+                github: "#"
+            }
+        },
+        {
+            id: 2,
+            title: "AI-Powered Analytics Platform",
+            description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
+            technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
+            image: "brain", // Font Awesome brain icon for AI
+            links: {
+                live: "#",
+                github: "#"
+            }
+        },
+        {
+            id: 2,
+            title: "AI-Powered Analytics Platform",
+            description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
+            technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
+            image: "brain", // Font Awesome brain icon for AI
+            links: {
+                live: "#",
+                github: "#"
+            }
+        },
+        {
+            id: 2,
+            title: "AI-Powered Analytics Platform",
+            description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
+            technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
+            image: "brain", // Font Awesome brain icon for AI
+            links: {
+                live: "#",
+                github: "#"
+            }
+        },
+        {
+            id: 4,
             title: "Multi-Cloud Disaster Recovery",
             description: "Designed and implemented a comprehensive disaster recovery solution spanning AWS, Azure, and Google Cloud Platform, ensuring 99.9% uptime for critical business applications.",
             technologies: ["AWS", "Azure", "GCP", "Terraform", "Ansible"],
