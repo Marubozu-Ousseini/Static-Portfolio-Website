@@ -176,32 +176,54 @@ const siteContent = {
             title: "NBA Game Day Notifications / Sports Alerts System",
             description: "This project is an alert system that sends real-time NBA game day score notifications to subscribed users via SMS/Email. It leverages Amazon SNS, AWS Lambda and Python, Amazon EvenBridge and NBA APIs to provide sports fans with up-to-date game information. The project demonstrates cloud computing principles and efficient notification mechanisms.",
             technologies: ["AWS", "Amazon SNS", "AWS Lambda", "Amazon EventBridge", "Python 3.x", "SportsData.io API", "Boto3 (AWS SDK)", "Twilio (for SMS)", "SMTP (for Email)"],
-            image: "https://github.com/user-attachments/assets/5e19635e-0685-4c07-9601-330f7d1231f9", // Font Awesome brain icon for AI
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/gameDay.png?raw=true", // Font Awesome brain icon for AI
             links: {
                 live: "#",
                 github: "https://github.com/Marubozu-Ousseini/30-Day-DevOps-Challenge_Day02game-day"
             }
         },
         {
-            id: 2,
-            title: "AI-Powered Analytics Platform",
-            description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
-            technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
-            image: "brain", // Font Awesome brain icon for AI
+            id: 5,
+            title: "Weather Dashboard",
+            description: "Fetches real-time weather data for multiple cities, displays temperature (°F), humidity, and weather conditions, automatically stores weather data in AWS S3, supports multiple cities tracking, timestamps all data for historical tracking",
+            technologies: ["Python 3.x", "AWS (S3)", "OpenWeather API", "boto3 (AWS SDK)", "python-dotenv"],
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/weather.png?raw=true", // Font Awesome brain icon for AI
             links: {
                 live: "#",
-                github: "#"
+                github: "https://github.com/Marubozu-Ousseini/30days-weather-dashboard-Yd--Dla-Gra"
             }
         },
         {
-            id: 2,
-            title: "AI-Powered Analytics Platform",
-            description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
-            technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
-            image: "brain", // Font Awesome brain icon for AI
+            id: 6,
+            title: "NBA DataLake",
+            description: "This repository contains the setup_nba_data_lake.py script, which automates the creation of a data lake for NBA analytics using AWS services. The script integrates Amazon S3, AWS Glue, and Amazon Athena, and sets up the infrastructure needed to store and query NBA-related data.",
+            technologies: ["CloudShell Console", "S3 bucket", "Glue database and ETL", "Athena", "Lambda", "QuickSight"],
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/datalake.png?raw=true", // Font Awesome brain icon for AI
             links: {
                 live: "#",
-                github: "#"
+                github: "https://github.com/Marubozu-Ousseini/NBADataLake-Day3-DevOpsAllStarsChallenge"
+            }
+        },
+        {
+            id: 7,
+            title: "Sports API Management System",
+            description: "This project demonstrates building a containerized API management system for querying sports data. It leverages Amazon ECS (Fargate) for running containers, Amazon API Gateway for exposing REST endpoints, and an external Sports API for real-time sports data. The project showcases advanced cloud computing practices, including API management, container orchestration, and secure AWS integrations.",
+            technologies: ["AWS Amazon ECS (Fargate)", "Amazon ECR", "API Gateway", "CloudWatch", "Python 3.x", "Docker", "IAM Security"],
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/API%20man.jpg?raw=true", // Font Awesome brain icon for AI
+            links: {
+                live: "#",
+                github: "https://github.com/Marubozu-Ousseini/containerized-sports-api"
+            }
+        },
+        {
+            id: 8,
+            title: "NCAA Game Highlights",
+            description: "This project uses RapidAPI to obtain NCAA game highlights using a Docker container and uses AWS Media Convert to convert the media file. Terraform Scripts: These scripts are used to created resources in AWS in a scalable and repeatable way. All of the resources we work with like S3, creating IAM user roles, elastic registry service and elastic container services is built here.",
+            technologies: ["CloudShell", "RapidAPI", "S3", "Terraform", "Docker", "ECR", "ECS", "VPC media endpoint"],
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/NCAA.png?raw=true", // Font Awesome brain icon for AI
+            links: {
+                live: "#",
+                github: "https://github.com/Marubozu-Ousseini/NCAA-GameHighlights"
             }
         },
         {
