@@ -169,7 +169,7 @@ const siteContent = {
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/Statistique.png?raw=true",
             links: {
                 live: "#",
-                github: "https://github.com/Marubozu-Ousseini/NBA-statistics-pipeline-using-AWS"
+                github: "https://github.com/Marubozu-Ousseini/nba-stats-pipeline"
             }
         },
         {
@@ -228,22 +228,22 @@ const siteContent = {
             }
         },
         {
-            id: 2,
-            title: "AI-Powered Analytics Platform",
-            description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
-            technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
-            image: "brain", // Font Awesome brain icon for AI
+            id: 9,
+            title: "From Monolithic App to Microservices",
+            description: "Deploy a monolithic Node.js application to a Docker container, then decouple the application into microservices without any downtime. The Node.js application hosts a simple message board with threads and messages between users.",
+            technologies: ["AWS CLI", "Copilot", "Docker", "VS Code", "EC2", "ECR", "ECS", "Fargate"],
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/mono.jpg?raw=true", // Font Awesome brain icon for AI
             links: {
                 live: "#",
-                github: "#"
+                github: "https://github.com/Marubozu-Ousseini/amazon-ecs-nodejs-microservices.git"
             }
         },
         {
-            id: 2,
-            title: "AI-Powered Analytics Platform",
-            description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
-            technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
-            image: "brain", // Font Awesome brain icon for AI
+            id: 10,
+            title: "Connecting VPCs",
+            description: "The city's marketing team wants separate Amazon VPCs for each department that allows communication between Amazon VPCs.",
+            technologies: ["VPC", "AWS Console", "AWS Subnet", "VPC Peering"],
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/vpc.png?raw=true", // Font Awesome brain icon for AI
             links: {
                 live: "#",
                 github: "#"
@@ -265,7 +265,7 @@ const siteContent = {
             title: "Multi-Cloud Disaster Recovery",
             description: "Designed and implemented a comprehensive disaster recovery solution spanning AWS, Azure, and Google Cloud Platform, ensuring 99.9% uptime for critical business applications.",
             technologies: ["AWS", "Azure", "GCP", "Terraform", "Ansible"],
-            image: "disaster-recovery",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/multicloud.webp?raw=true",
             links: {
                 live: "#",
                 github: "#"
