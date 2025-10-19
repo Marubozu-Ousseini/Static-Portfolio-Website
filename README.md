@@ -28,3 +28,4 @@ This static website can be hosted on any web hosting service:
 - **AWS**
 - **AWS S3**: Static website hosting with CloudFront
 
+

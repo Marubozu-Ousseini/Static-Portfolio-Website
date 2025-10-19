@@ -78,3 +78,4 @@ Your hero section now features:
 - **Responsive design**: Works on all devices
 
 Once you add your `cloud-ai-background.jpg` image to the `images/` folder, your website will display the stunning background with perfectly readable text!
+

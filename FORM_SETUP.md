@@ -94,3 +94,4 @@ Your contact form includes:
 - Email: meandyougtn@gmail.com
 - Form Endpoint: [Update with your Formspree URL]
 - Status: Ready for Formspree setup
+

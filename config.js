@@ -19,7 +19,7 @@ const siteContent = {
         subtitle: "Transforming businesses with cutting-edge cloud solutions and AI technologies",
         description: "I am a highly motivated Cloud and AI Consultant, uniquely positioned with a strong foundation in both Cloud computing and Artificial Intelligence. My expertise is validated by industry leading certifications. This robust skill set, combined with my background in Cryptocurrency, Web3, and Blockchain, allows me to architect and deploy innovative, scalable, and secure cloud-native solutions, with a particular focus on leveraging advanced AI capabilities to drive transformative business outcomes. I am dedicated to pushing the boundaries of technology to create intelligent systems that redefine possibilities.",
         email: "meandyougtn@gmail.com",
-        phone: "+237 6 99 95 78 78",
+        phone: "+1(917) 672-6792",
         linkedin: "linkedin.com/in/marubozu",
         github: "https://github.com/Marubozu-Ousseini",
         linkedin: "https://www.linkedin.com/in/marubozu",
@@ -141,17 +141,6 @@ const siteContent = {
     projects: [
         {
             id: 1,
-            title: "Cloud Migration Strategy",
-            description: "Led the migration of a legacy on-premises system to AWS, reducing infrastructure costs by 40% and improving scalability. Implemented automated CI/CD pipelines and containerized applications using Docker and Kubernetes.",
-            technologies: ["AWS", "Docker", "Kubernetes", "Terraform", "Jenkins"],
-            image: "cloud", // Font Awesome cloud icon
-            links: {
-                live: "#", // Replace with actual project URL
-                github: "#" // Replace with GitHub repository URL
-            }
-        },
-        {
-            id: 2,
             title: "AI-Powered Analytics Platform",
             description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
             technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
@@ -162,40 +151,18 @@ const siteContent = {
             }
         },
         {
+            id: 2,
+            title: "Portfolio Webpage (with AI Agent Integration)",
+            description: "This site is powered by Bebeyel, my custom-built AI Agent, designed for instant knowledge retrieval. Tired of endless scrolling? Ask Bebeyel directly about my expertise, project methodologies, technology stack, or specific contributions. It acts as your personalized, 24/7 portfolio guide, giving you concise, conversational answers drawn directly from my this website and my experience added as RAG.",
+            technologies: ["Cursor", "AWS", "GPT-5 mini", "Deepseek", "formspree", "OpenAI Agent Builder"],
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/portfolio.png?raw=true", // Font Awesome cloud icon
+            links: {
+                live: "#", // Replace with actual project URL
+                github: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website" // Replace with GitHub repository URL
+            }
+        },
+        {
             id: 3,
-            title: "NBA statistics pipeline using AWS",
-            description: "This project creates an automated data pipeline that collects and stores NBA team statistics using AWS services. It demonstrates core DevOps principles including cloud storage, API integration, automated data collection, and infrastructure as code.",
-            technologies: ["- Python 3.x", "AWS DynamoDB", "AWS Lambda", "AWS CloudWatch", "SportsData.io API", "Boto3 (AWS SDK)", "Python JSON Logger"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/Statistique.png?raw=true",
-            links: {
-                live: "#",
-                github: "https://github.com/Marubozu-Ousseini/nba-stats-pipeline"
-            }
-        },
-        {
-            id: 4,
-            title: "NBA Game Day Notifications / Sports Alerts System",
-            description: "This project is an alert system that sends real-time NBA game day score notifications to subscribed users via SMS/Email. It leverages Amazon SNS, AWS Lambda and Python, Amazon EvenBridge and NBA APIs to provide sports fans with up-to-date game information. The project demonstrates cloud computing principles and efficient notification mechanisms.",
-            technologies: ["AWS", "Amazon SNS", "AWS Lambda", "Amazon EventBridge", "Python 3.x", "SportsData.io API", "Boto3 (AWS SDK)", "Twilio (for SMS)", "SMTP (for Email)"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/gameDay.png?raw=true", // Font Awesome brain icon for AI
-            links: {
-                live: "#",
-                github: "https://github.com/Marubozu-Ousseini/30-Day-DevOps-Challenge_Day02game-day"
-            }
-        },
-        {
-            id: 5,
-            title: "Weather Dashboard",
-            description: "Fetches real-time weather data for multiple cities, displays temperature (°F), humidity, and weather conditions, automatically stores weather data in AWS S3, supports multiple cities tracking, timestamps all data for historical tracking",
-            technologies: ["Python 3.x", "AWS (S3)", "OpenWeather API", "boto3 (AWS SDK)", "python-dotenv"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/weather.png?raw=true", // Font Awesome brain icon for AI
-            links: {
-                live: "#",
-                github: "https://github.com/Marubozu-Ousseini/30days-weather-dashboard-Yd--Dla-Gra"
-            }
-        },
-        {
-            id: 6,
             title: "NBA DataLake",
             description: "This repository contains the setup_nba_data_lake.py script, which automates the creation of a data lake for NBA analytics using AWS services. The script integrates Amazon S3, AWS Glue, and Amazon Athena, and sets up the infrastructure needed to store and query NBA-related data.",
             technologies: ["CloudShell Console", "S3 bucket", "Glue database and ETL", "Athena", "Lambda", "QuickSight"],
@@ -206,7 +173,7 @@ const siteContent = {
             }
         },
         {
-            id: 7,
+            id: 4,
             title: "Sports API Management System",
             description: "This project demonstrates building a containerized API management system for querying sports data. It leverages Amazon ECS (Fargate) for running containers, Amazon API Gateway for exposing REST endpoints, and an external Sports API for real-time sports data. The project showcases advanced cloud computing practices, including API management, container orchestration, and secure AWS integrations.",
             technologies: ["AWS Amazon ECS (Fargate)", "Amazon ECR", "API Gateway", "CloudWatch", "Python 3.x", "Docker", "IAM Security"],
@@ -217,7 +184,7 @@ const siteContent = {
             }
         },
         {
-            id: 8,
+            id: 5,
             title: "NCAA Game Highlights",
             description: "This project uses RapidAPI to obtain NCAA game highlights using a Docker container and uses AWS Media Convert to convert the media file. Terraform Scripts: These scripts are used to created resources in AWS in a scalable and repeatable way. All of the resources we work with like S3, creating IAM user roles, elastic registry service and elastic container services is built here.",
             technologies: ["CloudShell", "RapidAPI", "S3", "Terraform", "Docker", "ECR", "ECS", "VPC media endpoint"],
@@ -228,7 +195,7 @@ const siteContent = {
             }
         },
         {
-            id: 9,
+            id: 6,
             title: "From Monolithic App to Microservices",
             description: "Deploy a monolithic Node.js application to a Docker container, then decouple the application into microservices without any downtime. The Node.js application hosts a simple message board with threads and messages between users.",
             technologies: ["AWS CLI", "Copilot", "Docker", "VS Code", "EC2", "ECR", "ECS", "Fargate"],
@@ -236,6 +203,39 @@ const siteContent = {
             links: {
                 live: "#",
                 github: "https://github.com/Marubozu-Ousseini/amazon-ecs-nodejs-microservices.git"
+            }
+        },
+        {
+            id: 7,
+            title: "NBA statistics pipeline using AWS",
+            description: "This project creates an automated data pipeline that collects and stores NBA team statistics using AWS services. It demonstrates core DevOps principles including cloud storage, API integration, automated data collection, and infrastructure as code.",
+            technologies: ["- Python 3.x", "AWS DynamoDB", "AWS Lambda", "AWS CloudWatch", "SportsData.io API", "Boto3 (AWS SDK)", "Python JSON Logger"],
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/Statistique.png?raw=true",
+            links: {
+                live: "#",
+                github: "https://github.com/Marubozu-Ousseini/nba-stats-pipeline"
+            }
+        },
+        {
+            id: 8,
+            title: "NBA Game Day Notifications / Sports Alerts System",
+            description: "This project is an alert system that sends real-time NBA game day score notifications to subscribed users via SMS/Email. It leverages Amazon SNS, AWS Lambda and Python, Amazon EvenBridge and NBA APIs to provide sports fans with up-to-date game information. The project demonstrates cloud computing principles and efficient notification mechanisms.",
+            technologies: ["AWS", "Amazon SNS", "AWS Lambda", "Amazon EventBridge", "Python 3.x", "SportsData.io API", "Boto3 (AWS SDK)", "Twilio (for SMS)", "SMTP (for Email)"],
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/gameDay.png?raw=true", // Font Awesome brain icon for AI
+            links: {
+                live: "#",
+                github: "https://github.com/Marubozu-Ousseini/30-Day-DevOps-Challenge_Day02game-day"
+            }
+        },
+        {
+            id: 9,
+            title: "Weather Dashboard",
+            description: "Fetches real-time weather data for multiple cities, displays temperature (°F), humidity, and weather conditions, automatically stores weather data in AWS S3, supports multiple cities tracking, timestamps all data for historical tracking",
+            technologies: ["Python 3.x", "AWS (S3)", "OpenWeather API", "boto3 (AWS SDK)", "python-dotenv"],
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/weather.png?raw=true", // Font Awesome brain icon for AI
+            links: {
+                live: "#",
+                github: "https://github.com/Marubozu-Ousseini/30days-weather-dashboard-Yd--Dla-Gra"
             }
         },
         {
@@ -250,7 +250,7 @@ const siteContent = {
             }
         },
         {
-            id: 2,
+            id: 11,
             title: "AI-Powered Analytics Platform",
             description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
             technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
@@ -261,7 +261,7 @@ const siteContent = {
             }
         },
         {
-            id: 4,
+            id: 12,
             title: "Multi-Cloud Disaster Recovery",
             description: "Designed and implemented a comprehensive disaster recovery solution spanning AWS, Azure, and Google Cloud Platform, ensuring 99.9% uptime for critical business applications.",
             technologies: ["AWS", "Azure", "GCP", "Terraform", "Ansible"],

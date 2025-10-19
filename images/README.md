@@ -37,3 +37,4 @@ This folder is for storing your portfolio images, including your profile picture
 - The website will automatically crop and resize your image to fit the circular profile area
 - If no profile picture is set, a default user icon will be displayed
 - Make sure your image URL is publicly accessible if using an online URL
+
