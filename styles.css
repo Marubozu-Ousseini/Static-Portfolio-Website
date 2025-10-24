@@ -233,11 +233,17 @@ p {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: 
-        linear-gradient(135deg, var(--background-color) 0%, var(--surface-color) 100%),
-        url('./images/cloud-ai-background.jpg') no-repeat center center;
+    /* dark fallback color if images fail */
+    background-color: var(--surface-color);
+    /* overlay gradient on top, then local image fallbacks */
+    background-image: linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 100%),
+                      url('images/cloud-ai-background.jpg'),
+                      url('images/cloud-ai-background.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
-    background-attachment: fixed;
+    /* avoid `fixed` which can be problematic on mobile browsers */
+    background-attachment: scroll;
     position: relative;
     overflow: hidden;
 }
@@ -257,6 +263,11 @@ p {
     );
     pointer-events: none;
     z-index: 1;
+}
+
+/* Ensure readable content when background image fails */
+.hero.no-bg::before {
+    background: linear-gradient(135deg, rgba(10,10,10,0.85), rgba(26,26,26,0.85));
 }
 
 .hero-container {
@@ -294,13 +305,32 @@ p {
 .hero-purpose {
     max-width: 800px;
     margin: 0 0 var(--spacing-2xl) 0;
-    position: relative; /* allow z-index to take effect */
+    position: relative;
     color: var(--text-primary);
     font-size: var(--font-size-lg);
     text-align: left;
     line-height: 1.6;
     z-index: 3;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    padding: var(--spacing-lg);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.hero-purpose b {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.hero-purpose:hover {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
 }
 
 .hero-buttons {
