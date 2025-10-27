@@ -1,31 +1,23 @@
-# Cloud & AI Consultant Portfolio Website
+# Static Portfolio Website
 
-A modern, responsive portfolio website for Cloud and AI consultants featuring dynamic Credly certification integration.
+## Structure
 
+- `index.html`, `app.js`, `styles.css`, `config.js` — Main site files (project root)
+- `images/` — Image assets
+- `widget/` — External widgets (e.g., chatbot) as submodule or local code
+- `README.md`, `FORM_SETUP.md` — Documentation
 
-### Responsive Design
-- Mobile-first approach with CSS Grid and Flexbox
-- Breakpoints: 768px (tablet), 480px (mobile)
-- Smooth animations and transitions
+## Widget Integration
 
-### Performance Features
-- Lazy loading for images
-- Intersection Observer for scroll animations
-- Debounced scroll events
-- Optimized asset loading
+If using a widget as a submodule:
+```
+git submodule add <widget-repo-url> widget
+```
 
-## Browser Support
+Update your HTML to reference widget assets from `widget/`.
 
-- Chrome 60+
-- Firefox 60+
-- Safari 12+
-- Edge 79+
-
-## Hosting Options
-
-This static website can be hosted on any web hosting service:
-
-- **AWS**
-- **AWS S3**: Static website hosting with CloudFront
+## Notes
+- There is currently no `frontend/` or `backend/` directory. All main files are in the project root.
+- The `widget/` directory is present and contains the chatbot widget files.
 
 
