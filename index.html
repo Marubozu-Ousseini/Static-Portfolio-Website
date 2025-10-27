@@ -201,8 +201,8 @@
     <script src="app.js"></script>
     <!-- Set the API endpoint for the chatbot -->
     <script>
-    // Use a CORS proxy for local development. Remove the proxy for production.
-    window.CHATBOT_API = "https://corsproxy.io/?https://fv3yej7f2j.execute-api.us-east-1.amazonaws.com/prod/chat";
+    // Production: use the real API endpoint (CORS must be enabled on the API for your domain)
+    window.CHATBOT_API = "https://fv3yej7f2j.execute-api.us-east-1.amazonaws.com/prod/chat";
     </script>
     <link rel="stylesheet" href="widget/chatbot-widget.css">
     <script src="widget/chatbot-widget.js"></script>
