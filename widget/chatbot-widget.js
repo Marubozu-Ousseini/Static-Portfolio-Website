@@ -35,7 +35,7 @@
     input.value = '';
     addMsg('...', 'bot');
     try {
-      const res = await fetch(api, {
+      const res = await fetch(window.CHATBOT_API || '', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: q })
