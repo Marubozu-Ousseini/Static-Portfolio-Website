@@ -13,7 +13,7 @@
   document.body.appendChild(btn);
   const container = document.createElement('div');
   container.id = 'chatbot-container';
-  container.innerHTML = `<div id="chatbot-header">AI Chatbot <span id="chatbot-close">×</span></div><div id="chatbot-messages"></div><form id="chatbot-form"><input id="chatbot-input" autocomplete="off" placeholder="Ask me anything..."/><button>Send</button></form>`;
+  container.innerHTML = `<div id="chatbot-header">Sensei <span id="chatbot-close">×</span></div><div id="chatbot-messages"></div><form id="chatbot-form"><input id="chatbot-input" autocomplete="off" placeholder="Ask me anything..."/><button>Send</button></form>`;
   document.body.appendChild(container);
   btn.onclick = () => container.classList.toggle('open');
   document.getElementById('chatbot-close').onclick = () => container.classList.remove('open');

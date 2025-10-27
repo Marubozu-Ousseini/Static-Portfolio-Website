@@ -27,7 +27,7 @@ const translations = {
         hero: {
             title: siteContent.personalInfo?.title || 'Cloud & AI Consultant',
             subtitle: siteContent.personalInfo?.subtitle || 'Transforming businesses with cutting-edge cloud solutions and AI technologies',
-            purpose: siteContent.personalInfo?.heroPurpose || "Welcome to my interactive portfolio! The star feature here is Bebeyel, your AI Knowledge Assistant. Ask Bebeyel about my projects, skills, or experience to get instant, tailored responses."
+            purpose: siteContent.personalInfo?.heroPurpose || "Welcome to my interactive portfolio! The star feature here is Sensei, your AI Knowledge Assistant. Ask Sensei about my projects, skills, or experience to get instant, tailored responses."
         },
         sections: { about: 'About Me', certifications: 'AWS Certifications', projects: 'Featured Projects', skills: 'Technical Skills', contact: 'Get In Touch' },
         about: { description: siteContent.personalInfo?.description || '', stats: { yearsLabel: 'Years Experience', projectsLabel: 'Projects Completed', clientsLabel: 'Clients Served' } },
@@ -42,7 +42,7 @@ const translations = {
         hero: {
             title: 'Consultant Cloud & IA',
             subtitle: 'Transformer les entreprises avec des solutions cloud et des technologies IA de pointe',
-            purpose: siteContent.personalInfo?.heroPurposeFr || "Bienvenue sur mon portfolio interactif ! La fonctionnalité principale est Bebeyel, votre assistant de connaissances IA. Demandez à Bebeyel mes projets, compétences ou expériences pour obtenir des réponses instantanées et personnalisées."
+            purpose: siteContent.personalInfo?.heroPurposeFr || "Bienvenue sur mon portfolio interactif ! La fonctionnalité principale est Sensei, votre assistant de connaissances IA. Demandez à Sensei mes projets, compétences ou expériences pour obtenir des réponses instantanées et personnalisées."
         },
         sections: { about: 'À propos de moi', certifications: 'Certifications AWS', projects: 'Projets en vedette', skills: 'Compétences techniques', contact: 'Me contacter' },
         about: { description: siteContent.personalInfo?.description || '', stats: { yearsLabel: "Années d'expérience", projectsLabel: 'Projets réalisés', clientsLabel: 'Clients servis' } },
@@ -351,13 +351,13 @@ chatToggle?.addEventListener('click', () => {
 
 document.getElementById('chat-close')?.addEventListener('click', () => { chatOpen = false; chatPanel.classList.remove('open'); chatPanel.setAttribute('aria-hidden', 'true'); });
 
-chatForm?.addEventListener('submit', (e) => {
+chatForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const message = chatInput.value.trim();
     if (!message) return;
     addUserMessage(message);
     chatInput.value = '';
-    handleUserMessage(message);
+    await handleUserMessage(message);
 });
 
 function addUserMessage(message) {
@@ -367,15 +367,27 @@ function addBotMessage(message) {
     const div = document.createElement('div'); div.className = 'chat-message bot fade-in'; div.textContent = message; chatMessages.appendChild(div); chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
+// Use backend AI for chatbot responses
 async function handleUserMessage(message) {
-    const messageLower = message.toLowerCase();
-    let response = siteContent.chatbot?.responses?.default || translations[currentLang].chat.welcome;
-    if (messageLower.includes('cert') || messageLower.includes('aws')) response = siteContent.chatbot?.responses?.certifications || translations[currentLang].certifications.loading;
-    else if (messageLower.includes('project')) response = siteContent.chatbot?.responses?.projects || translations[currentLang].sections.projects;
-    else if (messageLower.includes('skill')) response = siteContent.chatbot?.responses?.skills || translations[currentLang].about.description;
-    else if (messageLower.includes('contact') || messageLower.includes('hire')) response = siteContent.chatbot?.responses?.contact || translations[currentLang].contact.labels.email;
-    await new Promise(r => setTimeout(r, 700));
-    addBotMessage(response);
+    addBotMessage('...');
+    try {
+        const api = window.CHATBOT_API || siteContent.chatbot?.api || '/api/chatbot';
+        const res = await fetch(api, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        });
+        const data = await res.json();
+        chatMessages.lastChild.innerText = data.message || 'No response.';
+        if (data.sources) {
+            const src = document.createElement('div');
+            src.className = 'sources';
+            src.innerText = 'Sources: ' + data.sources.map(s => s.title || s.name).join(', ');
+            chatMessages.appendChild(src);
+        }
+    } catch (e) {
+        chatMessages.lastChild.innerText = 'Error: ' + e.message;
+    }
 }
 
 // Contact form
