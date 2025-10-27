@@ -199,22 +199,16 @@
     <!-- Scripts -->
     <script src="config.js"></script>
     <script src="app.js"></script>
-
-    <!-- Chatbot Widget -->
-    <div id="chat-widget" class="chat-widget">
-        <button id="chat-toggle" class="chat-toggle" aria-label="Open chat">💬</button>
-        <div id="chat-panel" class="chat-panel" aria-hidden="true">
-            <div class="chat-header">
-                <strong id="chat-title">Chat</strong>
-                <button id="chat-close" class="chat-close" aria-label="Close chat">✕</button>
-            </div>
-            <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
-            <form id="chat-form" class="chat-form">
-                <input id="chat-input" type="text" placeholder="Ask me about my work..." aria-label="Chat input">
-                <button type="submit" class="btn btn-primary">Send</button>
-            </form>
-        </div>
-    </div>
+    <!-- Set the API endpoint for the chatbot -->
+<script>
+    window.CHATBOT_API = "https://fv3yej7f2j.execute-api.us-east-1.amazonaws.com/prod/chat";
+  </script>
+  
+  <!-- Chatbot Widget Stylesheet -->
+  <link rel="stylesheet" href="chatbot-widget.css">
+  
+  <!-- Chatbot Widget Script -->
+  <script src="chatbot-widget.js"></script>
 </body>
 </html>
 
