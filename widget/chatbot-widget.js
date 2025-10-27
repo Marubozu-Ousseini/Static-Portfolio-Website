@@ -2,7 +2,7 @@
 (function () {
   if (window.__CHATBOT_WIDGET_LOADED) return;
   window.__CHATBOT_WIDGET_LOADED = true;
-  const api = window.CHATBOT_API || '';
+  const api = window.CHATBOT_API || 'https://fv3yej7f2j.execute-api.us-east-1.amazonaws.com/prod/chat';
   const style = document.createElement('link');
   style.rel = 'stylesheet';
   style.href = 'chatbot-widget.css';

@@ -30,8 +30,9 @@ const siteContent = {
         },
             
         // Profile Picture Configuration
-        // Option 1: Use a URL to your profile picture
-        profilePicture: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/profile%20pic.jpg?raw=true", // Replace with your image URL, e.g., "https://example.com/your-photo.jpg"
+    // Option 1: Use a URL to your profile picture
+    // Use the local image for best performance and reliability
+    profilePicture: "images/profile pic.jpg", // Use your local image file
         
         // Option 2: Use a local image file
         // Create a folder called "images" in your website directory and add your photo
