@@ -1,12 +1,7 @@
 // Lightweight app.js rebuilt to provide dynamic rendering and translation support
 
 // DOM Elements (may be null if element not present)
-const langToggle = document.getElementById('lang-toggle');
-const chatToggle = document.getElementById('chat-toggle');
-const chatPanel = document.getElementById('chat-panel');
-const chatMessages = document.getElementById('chat-messages');
-const chatForm = document.getElementById('chat-form');
-const chatInput = document.getElementById('chat-input');
+// Removed language toggle (English only)
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
 const profilePicture = document.getElementById('profile-picture');
@@ -18,51 +13,14 @@ if (typeof siteContent === 'undefined') {
     window.siteContent = {};
 }
 
-// Translations: will refer to siteContent where useful
-// Initialize language from localStorage or default to 'en'
-let currentLang = localStorage.getItem('preferred-language') || 'en';
-const translations = {
-    en: {
-        nav: { home: 'Home', about: 'About', certifications: 'Certifications', projects: 'Projects', skills: 'Skills', contact: 'Contact' },
-        hero: {
-            title: siteContent.personalInfo?.title || 'Cloud & AI Consultant',
-            subtitle: siteContent.personalInfo?.subtitle || 'Transforming businesses with cutting-edge cloud solutions and AI technologies',
-            purpose: siteContent.personalInfo?.heroPurpose || "Welcome to my interactive portfolio! The star feature here is Sensei, your AI Knowledge Assistant. Ask Sensei about my projects, skills, or experience to get instant, tailored responses."
-        },
-        sections: { about: 'About Me', certifications: 'AWS Certifications', projects: 'Featured Projects', skills: 'Technical Skills', contact: 'Get In Touch' },
-        about: { description: siteContent.personalInfo?.description || '', stats: { yearsLabel: 'Years Experience', projectsLabel: 'Projects Completed', clientsLabel: 'Clients Served' } },
-        buttons: { viewWork: 'View My Work', getInTouch: 'Get In Touch', sendMessage: 'Send Message' },
-        contact: { labels: { email: 'Email', phone: 'Phone', linkedin: 'LinkedIn' }, placeholders: { name: 'Your Name', email: 'Your Email', subject: 'Subject', message: 'Your Message' } },
-        chat: { title: 'Chat', placeholder: 'Ask me about my work...', welcome: siteContent.chatbot?.welcomeMessage || 'Hello! I can help you learn more about my projects, skills, and experience.' },
-        footer: { copyright: siteContent.footer?.copyright || '' },
-        certifications: { loading: 'Loading certifications...', error: 'Unable to load certifications. Please check your Credly profile URL in the configuration.' }
-    },
-    fr: {
-        nav: { home: 'Accueil', about: 'À propos', certifications: 'Certifications', projects: 'Projets', skills: 'Compétences', contact: 'Contact' },
-        hero: {
-            title: 'Consultant Cloud & IA',
-            subtitle: 'Transformer les entreprises avec des solutions cloud et des technologies IA de pointe',
-            purpose: siteContent.personalInfo?.heroPurposeFr || "Bienvenue sur mon portfolio interactif ! La fonctionnalité principale est Sensei, votre assistant de connaissances IA. Demandez à Sensei mes projets, compétences ou expériences pour obtenir des réponses instantanées et personnalisées."
-        },
-        sections: { about: 'À propos de moi', certifications: 'Certifications AWS', projects: 'Projets en vedette', skills: 'Compétences techniques', contact: 'Me contacter' },
-        about: { description: siteContent.personalInfo?.description || '', stats: { yearsLabel: "Années d'expérience", projectsLabel: 'Projets réalisés', clientsLabel: 'Clients servis' } },
-        buttons: { viewWork: 'Voir mes travaux', getInTouch: 'Me contacter', sendMessage: 'Envoyer' },
-        contact: { labels: { email: 'Email', phone: 'Téléphone', linkedin: 'LinkedIn' }, placeholders: { name: 'Votre nom', email: 'Votre email', subject: 'Sujet', message: 'Votre message' } },
-        chat: { title: 'Chat', placeholder: 'Demandez-moi à propos de mon travail...', welcome: siteContent.chatbot?.welcomeMessageFr || 'Bonjour ! Je peux vous aider à en savoir plus sur mes projets, compétences et expériences.' },
-        footer: { copyright: siteContent.footer?.copyright || '' },
-        certifications: { loading: 'Chargement des certifications...', error: 'Impossible de charger les certifications. Veuillez vérifier l\'URL de votre profil Credly dans la configuration.' }
-    }
-};
+// English-only content, no translations or language toggle
 
 // DOMContentLoaded: populate initial content
 document.addEventListener('DOMContentLoaded', () => {
-    // Set initial language toggle button text
-    if (langToggle) langToggle.textContent = currentLang.toUpperCase();
-    
     // Basic personal info
     document.getElementById('nav-name').textContent = siteContent.personalInfo?.name || 'Your Name';
-    document.getElementById('hero-title').textContent = translations[currentLang].hero.title;
-    document.getElementById('hero-subtitle').textContent = translations[currentLang].hero.subtitle;
+    document.getElementById('hero-title').textContent = siteContent.personalInfo?.title || 'Cloud & AI Consultant';
+    document.getElementById('hero-subtitle').textContent = siteContent.personalInfo?.subtitle || 'Transforming businesses with cutting-edge cloud solutions and AI technologies';
 
     // Respect manual hero-purpose in HTML unless config explicitly provides heroPurpose
     const heroPurposeEl = document.getElementById('hero-purpose');
@@ -77,10 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('years-experience').textContent = siteContent.stats?.yearsExperience || '';
     document.getElementById('projects-completed').textContent = siteContent.stats?.projectsCompleted || '';
     document.getElementById('clients-served').textContent = siteContent.stats?.clientsServed || '';
-
-    // Chat setup
-    document.getElementById('chat-title').textContent = translations[currentLang].chat.title;
-    document.getElementById('chat-input').placeholder = translations[currentLang].chat.placeholder;
 
     // Profile picture
     if (siteContent.personalInfo?.profilePicture) {
@@ -114,97 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) { console.warn('bg check failed', e); }
 });
 
-// updateContent applies translations across the page
-function updateContent() {
-    // nav
-    document.querySelectorAll('.nav-link').forEach(link => {
-        const key = link.getAttribute('href').substring(1);
-        if (translations[currentLang].nav[key]) link.textContent = translations[currentLang].nav[key];
-    });
 
-    // hero
-    const heroTitle = document.getElementById('hero-title');
-    const heroSubtitle = document.getElementById('hero-subtitle');
-    if (heroTitle) heroTitle.textContent = translations[currentLang].hero.title;
-    if (heroSubtitle) heroSubtitle.textContent = translations[currentLang].hero.subtitle;
-    // hero-purpose: only replace if config supplies it (otherwise preserve authored HTML)
-    const heroPurposeEl = document.getElementById('hero-purpose');
-    if (heroPurposeEl && siteContent.personalInfo?.heroPurpose) {
-        const val = (currentLang === 'fr') ? (siteContent.personalInfo.heroPurposeFr || translations.fr.hero.purpose) : (siteContent.personalInfo.heroPurpose || translations.en.hero.purpose);
-        heroPurposeEl.innerHTML = val;
-    }
 
-    // about
-    const aboutDescEl = document.getElementById('about-description');
-    if (aboutDescEl) aboutDescEl.textContent = translations[currentLang].about.description || aboutDescEl.textContent;
-    // stats labels
-    const yearsLabel = document.querySelector('#years-experience')?.nextElementSibling;
-    const projectsLabel = document.querySelector('#projects-completed')?.nextElementSibling;
-    const clientsLabel = document.querySelector('#clients-served')?.nextElementSibling;
-    if (yearsLabel) yearsLabel.textContent = translations[currentLang].about.stats.yearsLabel;
-    if (projectsLabel) projectsLabel.textContent = translations[currentLang].about.stats.projectsLabel;
-    if (clientsLabel) clientsLabel.textContent = translations[currentLang].about.stats.clientsLabel;
 
-    // buttons
-    const heroPrimary = document.querySelector('.hero-buttons .btn-primary');
-    const heroSecondary = document.querySelector('.hero-buttons .btn-secondary');
-    if (heroPrimary) heroPrimary.textContent = translations[currentLang].buttons.viewWork;
-    if (heroSecondary) heroSecondary.textContent = translations[currentLang].buttons.getInTouch;
-
-    // section titles
-    Object.entries(translations[currentLang].sections).forEach(([key, value]) => {
-        const el = document.getElementById(`${key}-title`);
-        if (el) el.textContent = value;
-    });
-
-    // subtitles
-    ['certifications','projects','skills','contact'].forEach(k => {
-        const s = document.getElementById(`${k}-subtitle`);
-        if (s && translations[currentLang].sections[`${k}Subtitle`]) s.textContent = translations[currentLang].sections[`${k}Subtitle`];
-    });
-
-    // contact labels and placeholders
-    const contactH4s = document.querySelectorAll('.contact-item h4');
-    if (contactH4s.length >= 3) {
-        contactH4s[0].textContent = translations[currentLang].contact.labels.email;
-        contactH4s[1].textContent = translations[currentLang].contact.labels.phone;
-        contactH4s[2].textContent = translations[currentLang].contact.labels.linkedin;
-    }
-    const placeholders = translations[currentLang].contact.placeholders;
-    if (placeholders) {
-        document.getElementById('name').placeholder = placeholders.name;
-        document.getElementById('email').placeholder = placeholders.email;
-        document.getElementById('subject').placeholder = placeholders.subject;
-        document.getElementById('message').placeholder = placeholders.message;
-        const submitBtn = document.querySelector('#contact-form button[type="submit"]');
-        if (submitBtn) submitBtn.textContent = translations[currentLang].buttons.sendMessage;
-    }
-
-    // chat
-    const chatTitleEl = document.getElementById('chat-title');
-    if (chatTitleEl) chatTitleEl.textContent = translations[currentLang].chat.title;
-    const chatInputEl = document.getElementById('chat-input');
-    if (chatInputEl) chatInputEl.placeholder = translations[currentLang].chat.placeholder;
-
-    // footer
-    const footerEl = document.getElementById('footer-text');
-    if (footerEl) footerEl.textContent = translations[currentLang].footer.copyright;
-
-    // cert messages
-    const certLoadP = document.querySelector('#certifications-loading p');
-    if (certLoadP) certLoadP.textContent = translations[currentLang].certifications.loading;
-    const certErrorP = document.querySelector('#certifications-error p');
-    if (certErrorP) certErrorP.textContent = translations[currentLang].certifications.error;
-}
-
-// Language toggle handler
-langToggle?.addEventListener('click', () => {
-    currentLang = currentLang === 'en' ? 'fr' : 'en';
-    // Save language preference
-    localStorage.setItem('preferred-language', currentLang);
-    langToggle.textContent = currentLang.toUpperCase();
-    updateContent();
-});
 
 // Load Certifications
 async function loadCertifications() {
@@ -236,8 +102,8 @@ async function loadCertifications() {
 
 // Create Certification Card
 function createCertificationCard(cert) {
-    const name = currentLang === 'fr' && cert.nameFr ? cert.nameFr : cert.name;
-    const description = currentLang === 'fr' && cert.descriptionFr ? cert.descriptionFr : cert.description;
+    const name = cert.name;
+    const description = cert.description;
     const card = document.createElement('div');
     card.className = 'certification-card fade-in';
     card.innerHTML = `
@@ -262,9 +128,9 @@ function loadProjects() {
 
 // Create Project Card
 function createProjectCard(project) {
-    const title = currentLang === 'fr' && project.titleFr ? project.titleFr : project.title;
-    const description = currentLang === 'fr' && project.descriptionFr ? project.descriptionFr : project.description;
-    const technologies = currentLang === 'fr' && project.technologiesFr ? project.technologiesFr : project.technologies;
+    const title = project.title;
+    const description = project.description;
+    const technologies = project.technologies;
     const card = document.createElement('div');
     card.className = 'project-card fade-in';
     const imageContent = (project.image || '').startsWith('http') || (project.image || '').startsWith('data:')
@@ -299,8 +165,7 @@ function loadSkills() {
 
 // Create Skill Category
 function createSkillCategory(category, skills) {
-    // Use French category name if available
-    const categoryName = currentLang === 'fr' && siteContent.skillCategoriesFr && siteContent.skillCategoriesFr[category] ? siteContent.skillCategoriesFr[category] : category;
+    const categoryName = category;
     const div = document.createElement('div');
     div.className = 'skill-category fade-in';
     div.innerHTML = `
@@ -309,7 +174,7 @@ function createSkillCategory(category, skills) {
             ${(skills || []).map(skill => `
                 <div class="skill-item">
                     <i class="${skill.icon} skill-icon"></i>
-                    <span class="skill-name">${currentLang === 'fr' && skill.nameFr ? skill.nameFr : skill.name}</span>
+                    <span class="skill-name">${skill.name}</span>
                 </div>
             `).join('')}
         </div>
@@ -340,55 +205,7 @@ navToggle?.addEventListener('click', () => { navToggle.classList.toggle('active'
 // Close mobile menu on link click
 document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', () => { navToggle.classList.remove('active'); navMenu.classList.remove('active'); }));
 
-// Chat widget behavior
-let chatOpen = false;
-chatToggle?.addEventListener('click', () => {
-    chatOpen = !chatOpen;
-    chatPanel.classList.toggle('open');
-    chatPanel.setAttribute('aria-hidden', (!chatOpen).toString());
-    if (chatOpen && chatMessages.childNodes.length === 0) addBotMessage(translations[currentLang].chat.welcome || siteContent.chatbot?.welcomeMessage || 'Hello!');
-});
-
-document.getElementById('chat-close')?.addEventListener('click', () => { chatOpen = false; chatPanel.classList.remove('open'); chatPanel.setAttribute('aria-hidden', 'true'); });
-
-chatForm?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const message = chatInput.value.trim();
-    if (!message) return;
-    addUserMessage(message);
-    chatInput.value = '';
-    await handleUserMessage(message);
-});
-
-function addUserMessage(message) {
-    const div = document.createElement('div'); div.className = 'chat-message user fade-in'; div.textContent = message; chatMessages.appendChild(div); chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-function addBotMessage(message) {
-    const div = document.createElement('div'); div.className = 'chat-message bot fade-in'; div.textContent = message; chatMessages.appendChild(div); chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-// Use backend AI for chatbot responses
-async function handleUserMessage(message) {
-    addBotMessage('...');
-    try {
-        const api = window.CHATBOT_API || siteContent.chatbot?.api || '/api/chatbot';
-        const res = await fetch(api, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message })
-        });
-        const data = await res.json();
-        chatMessages.lastChild.innerText = data.message || 'No response.';
-        if (data.sources) {
-            const src = document.createElement('div');
-            src.className = 'sources';
-            src.innerText = 'Sources: ' + data.sources.map(s => s.title || s.name).join(', ');
-            chatMessages.appendChild(src);
-        }
-    } catch (e) {
-        chatMessages.lastChild.innerText = 'Error: ' + e.message;
-    }
-}
+// ...existing code...
 
 // Contact form
 const contactForm = document.getElementById('contact-form');

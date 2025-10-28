@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud & AI Consultant Portfolio</title>
+    <meta name="description" content="Experienced Cloud and AI consultant specializing in AWS, Azure, machine learning, and DevOps. Helping businesses transform with cutting-edge technology solutions.">
+    <meta name="keywords" content="cloud consultant, AI consultant, AWS certified, machine learning, cloud architecture">
+    <meta name="author" content="Ousseini Oumarou">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Remove old chatbot-widget path, use correct widget/ path below -->
 </head>
 <body>
     <!-- Navigation -->
@@ -29,7 +33,7 @@
                 <span class="bar"></span>
             </div>
             <div class="nav-lang">
-                <button id="lang-toggle" class="lang-btn" aria-label="Switch language">EN</button>
+
             </div>
         </div>
     </nav>
@@ -40,7 +44,7 @@
             <div class="hero-content">
                 <h1 class="hero-title" id="hero-title">Cloud & AI Consultant</h1>
                 <p class="hero-subtitle" id="hero-subtitle">Transforming businesses with cutting-edge cloud solutions and AI technologies</p>
-                <p class="hero-purpose" id="hero-purpose">Welcome to my interactive portfolio! 💡 The star feature here is <b>Bebeyel, your AI Knowledge Assistant</b>. Skip the traditional resume browsing - simply ask Bebeyel about my projects, skills, or experience to get instant, tailored responses. Try it now by clicking the chat icon below!</p>
+                <p class="hero-purpose" id="hero-purpose">Welcome to my interactive portfolio! 💡 The star feature here is <b>Sensei, your AI Knowledge Assistant</b>. Skip the traditional resume browsing - simply ask Sensei about my projects, skills, or experience to get instant, tailored responses. Try it now by clicking the chat icon below!</p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
                     <a href="#contact" class="btn btn-secondary">Get In Touch</a>
@@ -50,7 +54,7 @@
                 <div class="hero-avatar" id="hero-avatar">
                     <!-- Profile picture will be loaded here dynamically -->
                     <i class="fas fa-user-circle" id="default-avatar-icon"></i>
-                    <img id="profile-picture" style="display: none;" alt="Profile Picture">
+                    <img id="profile-picture" style="display: none;" alt="Ousseini Oumarou profile picture">
                 </div>
             </div>
         </div>
@@ -142,21 +146,21 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>Email</h4>
-                            <p id="contact-email">john.doe@example.com</p>
+                            <p id="contact-email">meandyougtn@gmail.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
                         <div>
                             <h4>Phone</h4>
-                            <p id="contact-phone">+1 (555) 123-4567</p>
+                            <p id="contact-phone">+1(917) 672-6792</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-linkedin"></i>
                         <div>
                             <h4>LinkedIn</h4>
-                            <p id="contact-linkedin">linkedin.com/in/johndoe</p>
+                            <p id="contact-linkedin">https://www.linkedin.com/in/marubozu</p>
                         </div>
                     </div>
                 </div>
@@ -188,24 +192,39 @@
             <div class="footer-content">
                 <p id="footer-text">&copy; 2024 Cloud & AI Consultant. All rights reserved.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/Marubozu-Ousseini" class="social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/marubozu" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/O%27Marubozu%20Sensei" class="social-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="config.js"></script>
-    <script src="app.js"></script>
-    <!-- Set the API endpoint for the chatbot -->
-    <script>
-    // Production: use the real API endpoint (CORS must be enabled on the API for your domain)
-    window.CHATBOT_API = "https://fv3yej7f2j.execute-api.us-east-1.amazonaws.com/prod/chat";
-    </script>
+        <!-- Scripts -->
+        <noscript>
+            <div style="background: #ff6b6b; color: #fff; padding: 1em; text-align: center;">
+                This site requires JavaScript to function properly. Please enable JavaScript in your browser.
+            </div>
+        </noscript>
+        <script src="config.js" defer></script>
+        <script src="app.js" defer></script>
+        <script>
+            window.CHATBOT_API = 'https://a53uyqa4oc.execute-api.us-east-1.amazonaws.com/prod/chat';
+            // Dynamic lang switching for accessibility
+            document.addEventListener('DOMContentLoaded', function() {
+                var langBtn = document.getElementById('lang-toggle');
+                var htmlRoot = document.getElementById('html-root');
+                if (langBtn && htmlRoot) {
+                    langBtn.addEventListener('click', function() {
+                        setTimeout(function() {
+                            htmlRoot.setAttribute('lang', langBtn.textContent.trim().toLowerCase());
+                        }, 10);
+                    });
+                }
+            });
+        </script>
     <link rel="stylesheet" href="widget/chatbot-widget.css">
-    <script src="widget/chatbot-widget.js"></script>
+    <script src="widget/chatbot-widget.js" defer></script>
 </body>
 </html>
 
