@@ -237,7 +237,7 @@ p {
     background-color: var(--surface-color);
     /* overlay gradient on top, then local image fallbacks */
     background-image: linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 100%),
-                      url('https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/cloud-ai-background.jpg?raw=true');
+                      url('https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/cloud-ai-background.jpg?raw=true');
     background-position: center center;
     background-size: cover;
     /* avoid `fixed` which can be problematic on mobile browsers */
@@ -462,7 +462,7 @@ section {
 /* AWS Certifications background */
 .certifications {
     position: relative;
-    background: linear-gradient(135deg, rgba(3,10,14,0.6), rgba(10,15,20,0.6)), url('https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/AWS%20Certifications.png?raw=true') no-repeat center center;
+    background: linear-gradient(135deg, rgba(3,10,14,0.6), rgba(10,15,20,0.6)), url('https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/AWS%20Certifications.png?raw=true') no-repeat center center;
     background-size: cover;
     color: var(--text-primary);
 }

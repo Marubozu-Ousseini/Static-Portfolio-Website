@@ -18,7 +18,7 @@ window.siteContent = {
         // Profile Picture Configuration
     // Option 1: Use a URL to your profile picture
     // Use the local image for best performance and reliability
-    profilePicture: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/profile%20pic.jpg", // Use your local image file
+    profilePicture: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/profile%20pic.jpg", // Use your local image file
         
         // Option 2: Use a local image file
         // Create a folder called "images" in your website directory and add your photo
@@ -135,7 +135,7 @@ window.siteContent = {
             title: "AI-Powered Analytics Platform",
             description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
             technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/brain.png?raw=true",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/brain.png",
             links: {
                 live: "#",
                 github: "#"
@@ -149,7 +149,7 @@ window.siteContent = {
             descriptionFr: "Ce site est propulsé par Bebeyel, mon agent IA personnalisé, conçu pour une récupération instantanée des connaissances. Marre de faire défiler sans fin ? Demandez directement à Bebeyel mon expertise, mes méthodologies de projet, mon stack technologique ou mes contributions spécifiques. Il agit comme votre guide de portfolio personnalisé, disponible 24/7, vous offrant des réponses concises et conversationnelles tirées directement de ce site et de mon expérience intégrée en RAG.",
             technologies: ["Cursor", "AWS", "GPT-5 mini", "Deepseek", "formspree", "OpenAI Agent Builder"],
             technologiesFr: ["Cursor", "AWS", "GPT-5 mini", "Deepseek", "formspree", "OpenAI Agent Builder"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/portfolio.png",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/portfolio.png",
             links: {
                 live: "#",
                 github: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website"
@@ -162,7 +162,7 @@ window.siteContent = {
             descriptionFr: "Ce dépôt contient le script setup_nba_data_lake.py, qui automatise la création d'un lac de données pour l'analyse NBA en utilisant les services AWS. Le script intègre Amazon S3, AWS Glue et Amazon Athena, et configure l'infrastructure nécessaire pour stocker et interroger les données liées à la NBA.",
             technologies: ["CloudShell Console", "S3 bucket", "Glue database and ETL", "Athena", "Lambda", "QuickSight"],
             technologiesFr: ["CloudShell Console", "Bucket S3", "Base de données Glue et ETL", "Athena", "Lambda", "QuickSight"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/datalake.png",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/datalake.png",
             links: {
                 live: "#",
                 github: "https://github.com/Marubozu-Ousseini/NBADataLake-Day3-DevOpsAllStarsChallenge"
@@ -175,7 +175,7 @@ window.siteContent = {
             descriptionFr: "Ce projet démontre la construction d'un système de gestion d'API conteneurisé pour interroger des données sportives. Il utilise Amazon ECS (Fargate) pour exécuter des conteneurs, Amazon API Gateway pour exposer des points de terminaison REST, et une API sportive externe pour des données sportives en temps réel. Le projet met en avant des pratiques avancées de cloud computing, y compris la gestion d'API, l'orchestration de conteneurs et des intégrations AWS sécurisées.",
             technologies: ["AWS Amazon ECS (Fargate)", "Amazon ECR", "API Gateway", "CloudWatch", "Python 3.x", "Docker", "IAM Security"],
             technologiesFr: ["AWS Amazon ECS (Fargate)", "Amazon ECR", "API Gateway", "CloudWatch", "Python 3.x", "Docker", "Sécurité IAM"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/API%20man.jpg",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/API%20man.jpg",
             links: {
                 live: "#",
                 github: "https://github.com/Marubozu-Ousseini/containerized-sports-api"
@@ -188,7 +188,7 @@ window.siteContent = {
             descriptionFr: "Ce projet utilise RapidAPI pour obtenir les temps forts des matchs de la NCAA en utilisant un conteneur Docker et utilise AWS Media Convert pour convertir le fichier multimédia. Scripts Terraform : Ces scripts sont utilisés pour créer des ressources dans AWS de manière évolutive et répétable. Toutes les ressources avec lesquelles nous travaillons, comme S3, la création de rôles d'utilisateur IAM, le service d'enregistrement élastique et les services de conteneurs élastiques, sont construites ici.",
             technologies: ["CloudShell", "RapidAPI", "S3", "Terraform", "Docker", "ECR", "ECS", "VPC media endpoint"],
             technologiesFr: ["CloudShell", "RapidAPI", "S3", "Terraform", "Docker", "ECR", "ECS", "Point de terminaison multimédia VPC"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/NCAA.png",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/NCAA.png",
             links: {
                 live: "#",
                 github: "https://github.com/Marubozu-Ousseini/NCAA-GameHighlights"
@@ -201,7 +201,7 @@ window.siteContent = {
             descriptionFr: "Déployer une application Node.js monolithique dans un conteneur Docker, puis découpler l'application en microservices sans aucun temps d'arrêt. L'application Node.js héberge un simple tableau de messages avec des fils et des messages entre les utilisateurs.",
             technologies: ["AWS CLI", "Copilot", "Docker", "VS Code", "EC2", "ECR", "ECS", "Fargate"],
             technologiesFr: ["AWS CLI", "Copilot", "Docker", "VS Code", "EC2", "ECR", "ECS", "Fargate"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/mono.jpg",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/mono.jpg",
             links: {
                 live: "#",
                 github: "https://github.com/Marubozu-Ousseini/amazon-ecs-nodejs-microservices.git"
@@ -214,7 +214,7 @@ window.siteContent = {
             descriptionFr: "Ce projet crée un pipeline de données automatisé qui collecte et stocke les statistiques des équipes NBA en utilisant les services AWS. Il démontre les principes fondamentaux du DevOps, y compris le stockage cloud, l'intégration d'API, la collecte de données automatisée et l'infrastructure en tant que code.",
             technologies: ["- Python 3.x", "AWS DynamoDB", "AWS Lambda", "AWS CloudWatch", "SportsData.io API", "Boto3 (AWS SDK)", "Python JSON Logger"],
             technologiesFr: ["- Python 3.x", "AWS DynamoDB", "AWS Lambda", "AWS CloudWatch", "API SportsData.io", "Boto3 (AWS SDK)", "Journaliseur JSON Python"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/Statistique.png",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/Statistique.png",
             links: {
                 live: "#",
                 github: "https://github.com/Marubozu-Ousseini/nba-stats-pipeline"
@@ -227,7 +227,7 @@ window.siteContent = {
             descriptionFr: "Ce projet est un système d'alerte qui envoie des notifications de score en temps réel des matchs NBA aux utilisateurs abonnés par SMS/Email. Il utilise Amazon SNS, AWS Lambda et Python, Amazon EvenBridge et les API NBA pour fournir aux fans de sport des informations de match à jour. Le projet démontre les principes du cloud computing et des mécanismes de notification efficaces.",
             technologies: ["AWS", "Amazon SNS", "AWS Lambda", "Amazon EventBridge", "Python 3.x", "SportsData.io API", "Boto3 (AWS SDK)", "Twilio (for SMS)", "SMTP (for Email)"],
             technologiesFr: ["AWS", "Amazon SNS", "AWS Lambda", "Amazon EventBridge", "Python 3.x", "API SportsData.io", "Boto3 (AWS SDK)", "Twilio (pour SMS)", "SMTP (pour Email)"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/gameDay.png",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/gameDay.png",
             links: {
                 live: "#",
                 github: "https://github.com/Marubozu-Ousseini/30-Day-DevOps-Challenge_Day02game-day"
@@ -240,7 +240,7 @@ window.siteContent = {
             descriptionFr: "Récupère les données météorologiques en temps réel pour plusieurs villes, affiche la température (°F), l'humidité et les conditions météorologiques, stocke automatiquement les données météorologiques dans AWS S3, prend en charge le suivi de plusieurs villes, horodate toutes les données pour un suivi historique",
             technologies: ["Python 3.x", "AWS (S3)", "OpenWeather API", "boto3 (AWS SDK)", "python-dotenv"],
             technologiesFr: ["Python 3.x", "AWS (S3)", "API OpenWeather", "boto3 (AWS SDK)", "python-dotenv"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/weather.png",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/weather.png",
             links: {
                 live: "#",
                 github: "https://github.com/Marubozu-Ousseini/30days-weather-dashboard-Yd--Dla-Gra"
@@ -253,7 +253,7 @@ window.siteContent = {
             descriptionFr: "L'équipe marketing de la ville souhaite des VPC Amazon séparés pour chaque département permettant la communication entre les VPC Amazon.",
             technologies: ["VPC", "AWS Console", "AWS Subnet", "VPC Peering"],
             technologiesFr: ["VPC", "Console AWS", "Sous-réseau AWS", "Peering VPC"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/vpc.png",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/vpc.png",
             links: {
                 live: "#",
                 github: "#"
@@ -267,7 +267,7 @@ window.siteContent = {
             descriptionFr: "Développement d'une plateforme d'apprentissage automatique qui traite des flux de données en temps réel pour fournir des analyses prédictives aux entreprises de commerce électronique. Réalisé avec Python, TensorFlow et AWS SageMaker.",
             technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
             technologiesFr: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/brain.png?raw=true",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/brain.png",
             links: {
                 live: "#",
                 github: "#"
@@ -281,7 +281,7 @@ window.siteContent = {
             descriptionFr: "Conception et mise en œuvre d'une solution complète de récupération après sinistre s'étendant sur AWS, Azure et Google Cloud Platform, garantissant 99,9 % de temps de disponibilité pour les applications commerciales critiques.",
             technologies: ["AWS", "Azure", "GCP", "Terraform", "Ansible"],
             technologiesFr: ["AWS", "Azure", "GCP", "Terraform", "Ansible"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/blob/main/images/multicloud.webp",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/multicloud.webp",
             links: {
                 live: "#",
                 github: "#"
