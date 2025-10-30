@@ -334,8 +334,8 @@ window.siteContent = {
 
     // Contact Form Configuration
     contact: {
-        submitUrl: "https://formspree.io/f/mblzpwqr",
-        email: "meandyougtn@gmail.com",
+        submitUrl: window.getEnv ? window.getEnv('CONTACT_FORM_URL') : "https://formspree.io/f/mblzpwqr",
+        email: window.getEnv ? window.getEnv('CONTACT_EMAIL') : "meandyougtn@gmail.com",
         successMessage: "Thank you for your message! I'll get back to you soon.",
         successMessageFr: "Merci pour votre message ! Je vous répondrai bientôt.",
         errorMessage: "Sorry, there was an error sending your message. Please try again.",

@@ -206,10 +206,14 @@
                 This site requires JavaScript to function properly. Please enable JavaScript in your browser.
             </div>
         </noscript>
+        <script src="env-loader.js"></script>
         <script src="config.js" defer></script>
         <script src="app.js" defer></script>
         <script>
-            window.CHATBOT_API = 'https://a53uyqa4oc.execute-api.us-east-1.amazonaws.com/prod/chat';
+            // Set CHATBOT_API from environment after env-loader initializes
+            window.addEventListener('load', () => {
+                window.CHATBOT_API = window.getEnv('CHATBOT_API');
+            });
             // Dynamic lang switching for accessibility
             document.addEventListener('DOMContentLoaded', function() {
                 var langBtn = document.getElementById('lang-toggle');
