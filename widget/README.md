@@ -1,3 +1,12 @@
+Widget integration
+
+This folder consumes the shared widget from the submodule `../portfolio-chatbot-widget`.
+
+To sync the latest assets into this folder:
+
+    bash sync-widget.sh
+
+Ensure the submodule is initialized and updated before syncing.
 # Widget Submodule
 
 This directory is intended for widget code included as a git submodule.

@@ -7,7 +7,18 @@
       return;
     }
 
-    const api = window.CHATBOT_API || '';
+    // Resolve API lazily to allow env-loader + late assignment
+    const resolveApi = () => {
+      return (
+        window.CHATBOT_API ||
+        (typeof window.getEnv === 'function' ? window.getEnv('CHATBOT_API') : '') ||
+        ''
+      );
+    };
+    // Warn if loaded from file:// which breaks fetch and CORS
+    if (window.location.protocol === 'file:') {
+      console.warn('[chatbot] Running from file://. Start a local server (e.g., http://localhost:8000) so .env loads and CORS works.');
+    }
 
     // Ensure CSS is loaded (only once)
     if (!document.querySelector('link[href*="widget/chatbot-widget.css"]')) {
@@ -105,17 +116,27 @@
       messages.appendChild(loadingMsg);
       messages.scrollTop = messages.scrollHeight;
       try {
+        const api = resolveApi();
+        if (!api) {
+          loadingMsg.textContent = 'API not configured. For local dev: create .env with CHATBOT_API=... and open via http://localhost:8000 (not file://).';
+          return;
+        }
         const res = await fetch(api, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: q })
         });
         const data = await res.json();
-        loadingMsg.textContent = data.message || 'No response.';
+        // Ensure examples render on separate lines: CSS uses white-space: pre-wrap
+        loadingMsg.textContent = (data.message || '').replace(/\r\n/g, '\n');
         if (data.sources && data.sources.length > 0) {
           const src = document.createElement('div');
           src.className = 'sources';
-          src.textContent = 'Sources: ' + data.sources.map(s => s.title || s.name).join(', ');
+          const labels = data.sources.map(s => {
+            if (typeof s === 'string') return s;
+            return s?.title || s?.name || '';
+          }).filter(Boolean);
+          src.textContent = 'Sources: ' + labels.join(', ');
           messages.appendChild(src);
           messages.scrollTop = messages.scrollHeight;
         }

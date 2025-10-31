@@ -37,34 +37,16 @@ class EnvLoader {
     }
 
     setDefaults() {
-        // Set default values if not found in .env
-        if (!this.env.CHATBOT_API) {
-            this.env.CHATBOT_API = 'https://a53uyqa4oc.execute-api.us-east-1.amazonaws.com/prod/chat';
-        }
-        if (!this.env.CONTACT_FORM_URL) {
-            this.env.CONTACT_FORM_URL = 'https://formspree.io/f/mblzpwqr';
-        }
-        if (!this.env.CREDLY_USER_ID) {
-            this.env.CREDLY_USER_ID = 'ousseini-oumarou.fa8d6a81';
-        }
-        if (!this.env.CONTACT_EMAIL) {
-            this.env.CONTACT_EMAIL = 'meandyougtn@gmail.com';
-        }
-        if (!this.env.CONTACT_PHONE) {
-            this.env.CONTACT_PHONE = '+1(917) 672-6792';
-        }
-        if (!this.env.SOCIAL_LINKEDIN) {
-            this.env.SOCIAL_LINKEDIN = 'https://www.linkedin.com/in/marubozu';
-        }
-        if (!this.env.SOCIAL_GITHUB) {
-            this.env.SOCIAL_GITHUB = 'https://github.com/Marubozu-Ousseini';
-        }
-        if (!this.env.SOCIAL_TWITTER) {
-            this.env.SOCIAL_TWITTER = 'https://twitter.com/O%27Marubozu%20Sensei';
-        }
-        if (!this.env.GITHUB_REPO_URL) {
-            this.env.GITHUB_REPO_URL = 'https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main';
-        }
+        // Minimal safe defaults for local dev; production should inject real values at build time
+        this.env.CHATBOT_API = this.env.CHATBOT_API || '';
+        this.env.CONTACT_FORM_URL = this.env.CONTACT_FORM_URL || '';
+        this.env.CREDLY_USER_ID = this.env.CREDLY_USER_ID || '';
+        this.env.CONTACT_EMAIL = this.env.CONTACT_EMAIL || '';
+        this.env.CONTACT_PHONE = this.env.CONTACT_PHONE || '';
+        this.env.SOCIAL_LINKEDIN = this.env.SOCIAL_LINKEDIN || '';
+        this.env.SOCIAL_GITHUB = this.env.SOCIAL_GITHUB || '';
+        this.env.SOCIAL_TWITTER = this.env.SOCIAL_TWITTER || '';
+        this.env.GITHUB_REPO_URL = this.env.GITHUB_REPO_URL || '';
     }
 
     get(key) {

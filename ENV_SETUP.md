@@ -16,6 +16,20 @@ This project uses environment variables to manage sensitive information and conf
 
 3. **Never commit `.env` to version control** - it's already in `.gitignore`
 
+## Local development (important)
+
+Opening `index.html` directly with a file:// URL will break fetching `.env` and CORS to the API. Run a local web server instead:
+
+```bash
+cd static-portfolio-website
+python3 -m http.server 8000
+# then open http://localhost:8000 in your browser
+```
+
+Notes:
+- The API Gateway is configured to allow CORS from `http://localhost:8000` (and 127.0.0.1). File:// origins are blocked by browsers.
+- Ensure `.env` contains `CHATBOT_API=...` (your deployed endpoint). The `env-loader.js` will fetch it over HTTP when served locally.
+
 ## Environment Variables Reference
 
 ### Required Variables

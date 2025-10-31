@@ -1,4 +1,6 @@
-# .gitignore for static Portfolio website
+# Local environment for static site
+.env
+.DS_Store# .gitignore for static Portfolio website
 .DS_Store
 node_modules/
 dist/
