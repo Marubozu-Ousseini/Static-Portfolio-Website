@@ -210,9 +210,17 @@
         <script src="config.js" defer></script>
         <script src="app.js" defer></script>
         <script>
-            // Set CHATBOT_API from environment after env-loader initializes
-            window.addEventListener('load', () => {
-                window.CHATBOT_API = window.getEnv('CHATBOT_API');
+            // Configure CHATBOT_API after env-loader initializes.
+            // In production (ousseinioumarou.com), fallback to the deployed API if .env is not present.
+            window.addEventListener('DOMContentLoaded', function () {
+                var envApi = (typeof window.getEnv === 'function' && window.getEnv('CHATBOT_API')) || '';
+                var host = window.location.hostname || '';
+                var prodDefault = 'https://a53uyqa4oc.execute-api.us-east-1.amazonaws.com/prod/chat';
+                if (envApi) {
+                    window.CHATBOT_API = envApi;
+                } else if (/(?:^|\.)ousseinioumarou\.com$/i.test(host)) {
+                    window.CHATBOT_API = prodDefault;
+                }
             });
             // Dynamic lang switching for accessibility
             document.addEventListener('DOMContentLoaded', function() {
