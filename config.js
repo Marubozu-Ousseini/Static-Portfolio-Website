@@ -5,7 +5,7 @@ window.siteContent = {
     personalInfo: {
         name: "OUSSEINI OUMAROU",
         title: "Cloud & AI Consultant",
-        subtitle: "Transforming businesses with cutting-edge cloud solutions and AI technologies",
+        subtitle: "Solutions Architect - Transforming businesses with cutting-edge cloud solutions and AI technologies",
         description: "My name is OUSSEINI OUMAROU. I am a highly motivated Cloud and AI Consultant, uniquely positioned with a strong foundation in both Cloud computing and Artificial Intelligence. My expertise is validated by industry leading certifications. This robust skill set, combined with my background in Cryptocurrency, Web3, and Blockchain, allows me to architect and deploy innovative, scalable, and secure cloud-native solutions, with a particular focus on leveraging advanced AI capabilities to drive transformative business outcomes. I am dedicated to pushing the boundaries of technology to create intelligent systems that redefine possibilities.",
         email: "meandyougtn@gmail.com",
         phone: "+1(917) 672-6792",
@@ -56,7 +56,7 @@ window.siteContent = {
             },
             {
                 id: "MLA-C01",
-                name: "AWS Certified Machine Learning Engineer – Associate",
+                name: "AWS Certified Machine Learning Engineer – ONGOING",
                 image_url: "https://images.credly.com/size/340x340/images/1a634b4e-3d6b-4a74-b118-c0dcb429e8d2/image.png",
                 issued_at_date: "ongoing",
                 public_url: "ongoing",
@@ -142,7 +142,7 @@ window.siteContent = {
             id: 1,
             title: "Sensei – AI Portfolio Chatbot",
             description: "Sensei is a serverless AI portfolio chatbot that answers questions about my work in real time. It uses an S3-backed RAG store, a lightweight TF-IDF retriever, and AWS Bedrock (Llama 3) on Lambda behind API Gateway. Built for speed, low cost, and security, it returns concise answers with cited sources, throttled requests, and deterministic builds for predictable deployments in production.",
-            technologies: ["AWS Lambda", "API Gateway", "S3", "Bedrock (Llama 3)", "JavaScript", "RAG", "TF-IDF"],
+            technologies: ["AWS Lambda", "API Gateway", "S3", "ETL data transformation", "DynamoDB", "Bedrock (Llama 3)", "JavaScript", "Precompute-RAG", "TF-IDF"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/chatbot.jpg",
             links: {
                 live: "#",
@@ -284,7 +284,8 @@ window.siteContent = {
             { name: "Python", icon: "fab fa-python" },
             { name: "JavaScript", icon: "fab fa-js-square" },
             { name: "Java", icon: "fab fa-java" },
-            { name: "HTML", icon: "fab fa-html5" }
+            { name: "HTML", icon: "fab fa-html5" },
+            { name: "CSS", icon: "fab fa-css3" }
         ],
         "DevOps & Automation": [
             { name: "Docker", icon: "fab fa-docker" },
@@ -297,7 +298,8 @@ window.siteContent = {
             { name: "n8n", icon: "fas fa-brain" },
             { name: "AWS SageMaker", icon: "fas fa-robot" },
             { name: "TensorFlow", icon: "fas fa-brain" },
-            { name: "PyTorch", icon: "fas fa-brain" }
+            { name: "PyTorch", icon: "fas fa-brain" },
+            { name: "Bedrock", icon: "fas fa-robot" }
         ],
         "Databases": [
             { name: "RDS", icon: "fas fa-database" },
@@ -345,6 +347,18 @@ window.siteContent = {
         author: "Ousseini Oumarou"
     }
 };
+
+// Optional chatbot configuration used by the chat widget.
+// You can edit this list to customize the FAQs that appear when clicking the FAQ button in the widget header.
+window.siteContent.chatbot = window.siteContent.chatbot || {};
+window.siteContent.chatbot.faqs = window.siteContent.chatbot.faqs || [
+    'What are your key projects?',
+    'What AI/Machine Learning projects have you worked on?',
+    'What certifications do you have?',
+    'What are your core skills?',
+    'Tell me about yourself',
+    'How can I contact you?'
+];
 
 // Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {

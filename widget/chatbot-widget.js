@@ -58,8 +58,13 @@
     container.id = 'chatbot-container';
     container.innerHTML = [
       '<div id="chatbot-header">',
-      '  Sensei <span id="chatbot-close">×</span>',
+      '  <span class="title">Sensei🤖</span>',
+      '  <div class="header-actions">',
+      '    <button id="chatbot-faq-toggle" class="faq-toggle" title="Show FAQs">FAQ</button>',
+      '    <span id="chatbot-close" title="Close">×</span>',
+      '  </div>',
       '</div>',
+      '<div id="chatbot-faq" class="hidden"></div>',
       '<div id="chatbot-messages"></div>',
       '<form id="chatbot-form">',
       '  <input id="chatbot-input" autocomplete="off" placeholder="Ask me anything..."/>',
@@ -71,7 +76,9 @@
     // Elements
     const form = document.getElementById('chatbot-form');
     const input = document.getElementById('chatbot-input');
-    const messages = document.getElementById('chatbot-messages');
+  const messages = document.getElementById('chatbot-messages');
+  const faqPanel = document.getElementById('chatbot-faq');
+  const faqToggle = document.getElementById('chatbot-faq-toggle');
     const closeBtn = document.getElementById('chatbot-close');
 
     let welcomeShown = false;
@@ -104,10 +111,63 @@
       messages.scrollTop = messages.scrollHeight;
     }
 
-    form && form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const q = input.value.trim();
-      if (!q) return;
+    // Resolve FAQs from config with safe defaults
+    const resolveFaqs = () => {
+      const fromGlobal = (window.PortfolioChatbotConfig && Array.isArray(window.PortfolioChatbotConfig.faqs))
+        ? window.PortfolioChatbotConfig.faqs
+        : [];
+      const fromSiteContent = (window.siteContent && window.siteContent.chatbot && Array.isArray(window.siteContent.chatbot.faqs))
+        ? window.siteContent.chatbot.faqs
+        : [];
+      const defaults = [
+        'What are your key projects?',
+        'What AI/Machine Learning projects have you worked on?',
+        'What certifications do you have?',
+        'What are your core skills?',
+        'Tell me about yourself',
+        'How can I contact you?'
+      ];
+      const merged = [...fromGlobal, ...fromSiteContent];
+      return merged.length ? merged : defaults;
+    };
+
+    function renderFaqs() {
+      const faqs = resolveFaqs();
+      if (!faqs || !faqs.length) {
+        faqPanel.innerHTML = '';
+        return;
+      }
+      const html = [
+        '<div class="faq-list" role="list">',
+        ...faqs.map(q => `<button type="button" class="faq-item" role="listitem" data-q="${q.replace(/\"/g, '&quot;')}">❓ ${q}</button>`),
+        '</div>'
+      ].join('');
+      faqPanel.innerHTML = html;
+      // Wire clicks
+      faqPanel.querySelectorAll('.faq-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const q = btn.getAttribute('data-q') || '';
+          if (!q) return;
+          sendMessage(q);
+          // Close FAQ after sending
+          faqPanel.classList.add('hidden');
+        });
+      });
+    }
+
+    function toggleFaq() {
+      if (!faqPanel) return;
+      if (faqPanel.classList.contains('hidden')) {
+        renderFaqs();
+        faqPanel.classList.remove('hidden');
+      } else {
+        faqPanel.classList.add('hidden');
+      }
+    }
+
+    faqToggle && faqToggle.addEventListener('click', toggleFaq);
+
+    async function sendMessage(q) {
       addMsg(q, 'user');
       input.value = '';
       const loadingMsg = document.createElement('div');
@@ -127,7 +187,6 @@
           body: JSON.stringify({ message: q })
         });
         const data = await res.json();
-        // Ensure examples render on separate lines: CSS uses white-space: pre-wrap
         loadingMsg.textContent = (data.message || '').replace(/\r\n/g, '\n');
         if (data.sources && data.sources.length > 0) {
           const src = document.createElement('div');
@@ -143,6 +202,14 @@
       } catch (err) {
         loadingMsg.textContent = 'Error: ' + err.message;
       }
+    }
+
+    form && form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const q = input.value.trim();
+      if (!q) return;
+      // Delegate to shared sender
+      await sendMessage(q);
     });
 
     console.log('Chatbot widget initialized');
@@ -150,4 +217,3 @@
     console.error('Failed to initialize chatbot widget:', err);
   }
 })();
-
