@@ -253,7 +253,7 @@ window.siteContent = {
             title: "AI-Powered Analytics Platform",
             description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
             technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
-            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/brain.png",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/AI%20analitics.jpg",
             links: {
                 live: "#",
                 github: "#"
