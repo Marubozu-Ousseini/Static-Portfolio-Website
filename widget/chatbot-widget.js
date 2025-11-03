@@ -139,7 +139,7 @@
       }
       const html = [
         '<div class="faq-list" role="list">',
-        ...faqs.map(q => `<button type="button" class="faq-item" role="listitem" data-q="${q.replace(/\"/g, '&quot;')}">❓ ${q}</button>`),
+        ...faqs.map(q => `<button type="button" class="faq-item" role="listitem" data-q="${q.replace(/"/g, '&quot;')}">❓ ${q}</button>`),
         '</div>'
       ].join('');
       faqPanel.innerHTML = html;
@@ -217,3 +217,4 @@
     console.error('Failed to initialize chatbot widget:', err);
   }
 })();
+
