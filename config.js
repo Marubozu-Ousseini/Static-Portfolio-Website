@@ -143,16 +143,17 @@ window.siteContent = {
             title: "Zero-Downtime Blue-Green Deployment Pipeline",
             description: "Engineered a robust CI/CD pipeline enabling Blue-Green and Canary deployments on Google Cloud Run. Leverages Terraform for infrastructure-managed traffic splitting and Cloud Build for automated revision tagging. Features a suite of custom Bash scripts for gradual traffic shifting, immediate rollbacks, and validation, alongside backend enhancements for a new User Favorites system backed by PostgreSQL.",
             technologies: ["Terraform", "Google Cloud Run", "Cloud Build", "Bash/Shell", "PostgreSQL", "TypeScript"],
-            image: "path/to/deployment-diagram.png",
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/malafaareh2.png",
             links: {
-                live: "https://www.malafaareh.com"            }
+                live: "https://www.malafaareh.com"            
+            }
         },
         {
             id: 2,
             title: "Luxe Modern E-Commerce Platform",
             description: "Full-stack serverless e-commerce solution architected on Google Cloud using Terraform for complete Infrastructure as Code. Features a decoupled React/Vite frontend served via Global CDN and an auto-scaling Node.js API on Cloud Run (Gen2). Designed for security and cost-efficiency (~$62/mo baseline) with managed Cloud SQL, Secret Manager integration, and automated CI/CD pipelines.",
             technologies: ["Google Cloud Platform", "Terraform", "Cloud Run", "Cloud SQL", "Docker", "Node.js", "React/Vite", "Stripe API", "Cloud Build"],
-            image: "path/to/your/image.png", 
+            image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/malafaareh1.png", 
             links: {
                 live: "https://malafaareh.com"
             }
