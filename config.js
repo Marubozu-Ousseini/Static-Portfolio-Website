@@ -140,6 +140,25 @@ window.siteContent = {
     projects: [
         {
             id: 1,
+            title: "Zero-Downtime Blue-Green Deployment Pipeline",
+            description: "Engineered a robust CI/CD pipeline enabling Blue-Green and Canary deployments on Google Cloud Run. Leverages Terraform for infrastructure-managed traffic splitting and Cloud Build for automated revision tagging. Features a suite of custom Bash scripts for gradual traffic shifting, immediate rollbacks, and validation, alongside backend enhancements for a new User Favorites system backed by PostgreSQL.",
+            technologies: ["Terraform", "Google Cloud Run", "Cloud Build", "Bash/Shell", "PostgreSQL", "TypeScript"],
+            image: "path/to/deployment-diagram.png",
+            links: {
+                live: "https://www.malafaareh.com"            }
+        },
+        {
+            id: 2,
+            title: "Luxe Modern E-Commerce Platform",
+            description: "Full-stack serverless e-commerce solution architected on Google Cloud using Terraform for complete Infrastructure as Code. Features a decoupled React/Vite frontend served via Global CDN and an auto-scaling Node.js API on Cloud Run (Gen2). Designed for security and cost-efficiency (~$62/mo baseline) with managed Cloud SQL, Secret Manager integration, and automated CI/CD pipelines.",
+            technologies: ["Google Cloud Platform", "Terraform", "Cloud Run", "Cloud SQL", "Docker", "Node.js", "React/Vite", "Stripe API", "Cloud Build"],
+            image: "path/to/your/image.png", 
+            links: {
+                live: "https://malafaareh.com"
+            }
+        },
+        {
+            id: 3,
             title: "Sensei – AI Portfolio Chatbot",
             description: "Sensei is a serverless AI portfolio chatbot that answers questions about my work in real time. It uses an S3-backed RAG store, a lightweight TF-IDF retriever, and AWS Bedrock (Llama 3) on Lambda behind API Gateway. Built for speed, low cost, and security, it returns concise answers with cited sources, throttled requests, and deterministic builds for predictable deployments in production.",
             technologies: ["AWS Lambda", "API Gateway", "S3", "ETL data transformation", "DynamoDB", "Bedrock (Llama 3)", "JavaScript", "Precompute-RAG", "TF-IDF"],
@@ -150,7 +169,7 @@ window.siteContent = {
             }
         },
         {
-            id: 2,
+            id: 4,
             title: "Portfolio Webpage (with AI Agent Integration)",
             description: "Responsive portfolio website integrated with Sensei, my AI agent. The site renders dynamic sections (projects, certifications, skills) from a single config and embeds a chat widget that connects to a secure AWS backend (API Gateway + Lambda + Bedrock) using an S3-backed RAG store. Built for speed and reliability with lightweight JavaScript, clean CSS, and simple form handling and accessibility.",
             technologies: ["HTML", "CSS", "JavaScript", "AWS API Gateway", "AWS Lambda", "AWS Bedrock", "S3", "RAG (TF-IDF)", "Formspree"],
@@ -161,7 +180,7 @@ window.siteContent = {
             }
         },
         {
-            id: 3,
+            id: 5,
             title: "NBA DataLake",
             description: "This repository contains the setup_nba_data_lake.py script, which automates the creation of a data lake for NBA analytics using AWS services. The script integrates Amazon S3, AWS Glue, and Amazon Athena, and sets up the infrastructure needed to store and query NBA-related data.",
             technologies: ["CloudShell Console", "S3 bucket", "Glue database and ETL", "Athena", "Lambda", "QuickSight"],
@@ -172,7 +191,7 @@ window.siteContent = {
             }
         },
         {
-            id: 4,
+            id: 6,
             title: "Sports API Management System",
             description: "This project demonstrates building a containerized API management system for querying sports data. It leverages Amazon ECS (Fargate) for running containers, Amazon API Gateway for exposing REST endpoints, and an external Sports API for real-time sports data. The project showcases advanced cloud computing practices, including API management, container orchestration, and secure AWS integrations.",
             technologies: ["AWS Amazon ECS (Fargate)", "Amazon ECR", "API Gateway", "CloudWatch", "Python 3.x", "Docker", "IAM Security"],
@@ -183,7 +202,7 @@ window.siteContent = {
             }
         },
         {
-            id: 5,
+            id: 7,
             title: "NCAA Game Highlights",
             description: "This project uses RapidAPI to obtain NCAA game highlights using a Docker container and uses AWS Media Convert to convert the media file. Terraform Scripts: These scripts are used to created resources in AWS in a scalable and repeatable way. All of the resources we work with like S3, creating IAM user roles, elastic registry service and elastic container services is built here.",
             technologies: ["CloudShell", "RapidAPI", "S3", "Terraform", "Docker", "ECR", "ECS", "VPC media endpoint"],
@@ -194,7 +213,7 @@ window.siteContent = {
             }
         },
         {
-            id: 6,
+            id: 8,
             title: "From Monolithic App to Microservices",
             description: "Deploy a monolithic Node.js application to a Docker container, then decouple the application into microservices without any downtime. The Node.js application hosts a simple message board with threads and messages between users.",
             technologies: ["AWS CLI", "Copilot", "Docker", "VS Code", "EC2", "ECR", "ECS", "Fargate"],
@@ -205,7 +224,7 @@ window.siteContent = {
             }
         },
         {
-            id: 7,
+            id: 9,
             title: "NBA statistics pipeline using AWS",
             description: "This project creates an automated data pipeline that collects and stores NBA team statistics using AWS services. It demonstrates core DevOps principles including cloud storage, API integration, automated data collection, and infrastructure as code.",
             technologies: ["- Python 3.x", "AWS DynamoDB", "AWS Lambda", "AWS CloudWatch", "SportsData.io API", "Boto3 (AWS SDK)", "Python JSON Logger"],
@@ -216,7 +235,7 @@ window.siteContent = {
             }
         },
         {
-            id: 8,
+            id: 10,
             title: "NBA Game Day Notifications / Sports Alerts System",
             description: "This project is an alert system that sends real-time NBA game day score notifications to subscribed users via SMS/Email. It leverages Amazon SNS, AWS Lambda and Python, Amazon EvenBridge and NBA APIs to provide sports fans with up-to-date game information. The project demonstrates cloud computing principles and efficient notification mechanisms.",
             technologies: ["AWS", "Amazon SNS", "AWS Lambda", "Amazon EventBridge", "Python 3.x", "SportsData.io API", "Boto3 (AWS SDK)", "Twilio (for SMS)", "SMTP (for Email)"],
@@ -227,7 +246,7 @@ window.siteContent = {
             }
         },
         {
-            id: 9,
+            id: 11,
             title: "Weather Dashboard",
             description: "Fetches real-time weather data for multiple cities, displays temperature (°F), humidity, and weather conditions, automatically stores weather data in AWS S3, supports multiple cities tracking, timestamps all data for historical tracking",
             technologies: ["Python 3.x", "AWS (S3)", "OpenWeather API", "boto3 (AWS SDK)", "python-dotenv"],
@@ -238,7 +257,7 @@ window.siteContent = {
             }
         },
         {
-            id: 10,
+            id: 12,
             title: "Connecting VPCs",
             description: "The city's marketing team wants separate Amazon VPCs for each department that allows communication between Amazon VPCs.",
             technologies: ["VPC", "AWS Console", "AWS Subnet", "VPC Peering"],
@@ -249,7 +268,7 @@ window.siteContent = {
             }
         },
         {
-            id: 11,
+            id: 13,
             title: "AI-Powered Analytics Platform",
             description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
             technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
@@ -260,7 +279,7 @@ window.siteContent = {
             }
         },
         {
-            id: 12,
+            id: 14,
             title: "Multi-Cloud Disaster Recovery",
             description: "Designed and implemented a comprehensive disaster recovery solution spanning AWS, Azure, and Google Cloud Platform, ensuring 99.9% uptime for critical business applications.",
             technologies: ["AWS", "Azure", "GCP", "Terraform", "Ansible"],
