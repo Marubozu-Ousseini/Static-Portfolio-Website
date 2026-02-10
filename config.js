@@ -18,7 +18,7 @@ window.siteContent = {
         // Profile Picture Configuration
     // Option 1: Use a URL to your profile picture
     // Use the local image for best performance and reliability
-    profilePicture: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/profile%20pic.jpg", // Use your local image file
+    profilePicture: "https://ousseinioumarou.com/images/profile-pic.jpg", // Use your live-domain image for indexing
         
         // Option 2: Use a local image file
         // Create a folder called "images" in your website directory and add your photo

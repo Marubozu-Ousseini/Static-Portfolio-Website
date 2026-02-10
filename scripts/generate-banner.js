@@ -6,7 +6,7 @@ const sharp = require('sharp');
   try {
     const root = path.resolve(__dirname, '..');
     const imagesDir = path.join(root, 'images');
-    const inputPath = path.join(imagesDir, 'profile pic.jpg');
+    const inputPath = path.join(imagesDir, 'profile-pic.jpg');
     const outputPath = path.join(imagesDir, 'social-banner.png');
 
     if (!fs.existsSync(inputPath)) {

@@ -6,7 +6,7 @@ const sharp = require('sharp');
   try {
     const root = path.resolve(__dirname, '..');
     const imagesDir = path.join(root, 'images');
-    const inputPath = path.join(imagesDir, 'profile pic.jpg');
+    const inputPath = path.join(imagesDir, 'profile-pic.jpg');
     const outputs = [
       { file: 'favicon-32.png', size: 32 },
       { file: 'favicon-192.png', size: 192 },
