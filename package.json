@@ -4,7 +4,8 @@
   "private": true,
   "description": "Portfolio site for Ousseini Oumarou",
   "scripts": {
-    "generate:banner": "node scripts/generate-banner.js"
+    "generate:banner": "node scripts/generate-banner.js",
+    "generate:favicons": "node scripts/generate-favicons.js"
   },
   "dependencies": {
     "sharp": "^0.33.3"

@@ -11,6 +11,7 @@
     <link rel="canonical" href="https://ousseinioumarou.com/">
     <!-- Open Graph -->
     <meta property="og:title" content="Ousseini Oumarou — Cloud & AI Consultant">
+    <meta property="og:site_name" content="Ousseini Oumarou">
     <meta property="og:description" content="Cloud & AI consultant specializing in AWS, Azure, ML, and DevOps.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ousseinioumarou.com/">
@@ -24,6 +25,9 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <!-- Remove old chatbot-widget path, use correct widget/ path below -->
 </head>
 <body>
@@ -68,7 +72,7 @@
                 <div class="hero-avatar" id="hero-avatar">
                     <!-- Profile picture will be loaded here dynamically -->
                     <i class="fas fa-user-circle" id="default-avatar-icon"></i>
-                    <img id="profile-picture" style="display: none;" alt="Ousseini Oumarou profile picture">
+                    <img id="profile-picture" style="display: none;" alt="Profile photo of Ousseini Oumarou" width="420" height="420">
                 </div>
             </div>
         </div>
@@ -251,7 +255,7 @@
         </script>
     <link rel="stylesheet" href="widget/chatbot-widget.css">
     <script src="widget/chatbot-widget.js" defer></script>
-        <!-- JSON-LD Structured Data: Person -->
+        <!-- JSON-LD Structured Data: Person + WebSite -->
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -259,10 +263,28 @@
             "name": "Ousseini Oumarou",
             "jobTitle": "Cloud & AI Consultant",
             "url": "https://ousseinioumarou.com/",
+            "image": [
+                "https://ousseinioumarou.com/images/profile%20pic.jpg",
+                "https://ousseinioumarou.com/images/social-banner.png"
+            ],
             "sameAs": [
                 "https://www.linkedin.com/in/marubozu",
-                "https://github.com/Marubozu-Ousseini"
+                "https://github.com/Marubozu-Ousseini",
+                "https://twitter.com/O%27Marubozu%20Sensei"
             ]
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://ousseinioumarou.com/",
+            "name": "Ousseini Oumarou",
+            "description": "Cloud & AI consultant specializing in AWS, Azure, ML, and DevOps.",
+            "publisher": {
+                "@type": "Person",
+                "name": "Ousseini Oumarou"
+            }
         }
         </script>
 </body>
