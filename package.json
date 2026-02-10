@@ -5,7 +5,8 @@
   "description": "Portfolio site for Ousseini Oumarou",
   "scripts": {
     "generate:banner": "node scripts/generate-banner.js",
-    "generate:favicons": "node scripts/generate-favicons.js"
+    "generate:favicons": "node scripts/generate-favicons.js",
+    "generate:blog-banner": "node scripts/generate-blog-banner.js"
   },
   "dependencies": {
     "sharp": "^0.33.3"
