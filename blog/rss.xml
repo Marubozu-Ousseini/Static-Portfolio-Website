@@ -12,5 +12,12 @@
       <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
       <description>Background, focus areas, and how I help teams with cloud and AI.</description>
     </item>
+    <item>
+      <title>Architecting Malafaareh — Modern E‑Commerce with AI on GCP Serverless</title>
+      <link>https://ousseinioumarou.com/blog/malafaareh-modern-ecommerce.html</link>
+      <guid isPermaLink="true">https://ousseinioumarou.com/blog/malafaareh-modern-ecommerce.html</guid>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+      <description>GCP serverless architecture, Firebase deploy/auth, and AI-powered recommendations and follow‑ups for Malafaareh.com.</description>
+    </item>
   </channel>
 </rss>
