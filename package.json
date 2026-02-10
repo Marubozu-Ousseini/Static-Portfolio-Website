@@ -1,0 +1,12 @@
+{
+  "name": "static-portfolio-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio site for Ousseini Oumarou",
+  "scripts": {
+    "generate:banner": "node scripts/generate-banner.js"
+  },
+  "dependencies": {
+    "sharp": "^0.33.3"
+  }
+}
