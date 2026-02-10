@@ -140,8 +140,8 @@ window.siteContent = {
     projects: [
         {
             id: 1,
-            title: "Zero-Downtime Blue-Green Deployment Pipeline",
-            description: "Engineered a robust CI/CD pipeline enabling Blue-Green and Canary deployments on Google Cloud Run. Leverages Terraform for infrastructure-managed traffic splitting and Cloud Build for automated revision tagging. Features a suite of custom Bash scripts for gradual traffic shifting, immediate rollbacks, and validation, alongside backend enhancements for a new User Favorites system backed by PostgreSQL.",
+            title: "Zero-Downtime Blue-Green Deployment Pipeline(AI-Enhanced)",
+            description: "Engineered a robust CI/CD pipeline enabling Blue-Green and Canary deployments on Google Cloud Run. Leverages Terraform for infrastructure-managed traffic splitting and Cloud Build for automated revision tagging. Features a suite of custom Bash scripts for gradual traffic shifting, immediate rollbacks, and validation, alongside backend enhancements, AI recommendations/follow-ups for a new User Favorites system backed by PostgreSQL.",
             technologies: ["Terraform", "Google Cloud Run", "Cloud Build", "Bash/Shell", "PostgreSQL", "TypeScript"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/malafaareh2.png",
             links: {
