@@ -131,7 +131,7 @@ window.siteContent = {
 
     // About Section Statistics
     stats: {
-        yearsExperience: "2+",
+        yearsExperience: "10+",
         projectsCompleted: "50+",
         clientsServed: "10+"
     },
