@@ -19,7 +19,7 @@ if (typeof siteContent === 'undefined') {
 document.addEventListener('DOMContentLoaded', () => {
     // Basic personal info
     document.getElementById('nav-name').textContent = siteContent.personalInfo?.name || 'Your Name';
-    document.getElementById('hero-title').textContent = siteContent.personalInfo?.title || 'Cloud & AI Consultant';
+    document.getElementById('hero-title').textContent = siteContent.personalInfo?.title || 'AI & Cloud Consultant';
     document.getElementById('hero-subtitle').textContent = siteContent.personalInfo?.subtitle || 'Transforming businesses with cutting-edge cloud solutions and AI technologies';
 
     // Respect manual hero-purpose in HTML unless config explicitly provides heroPurpose
@@ -49,9 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('contact-linkedin')) document.getElementById('contact-linkedin').textContent = siteContent.personalInfo?.socialLinks?.linkedin || '';
 
     // Load dynamic sections
+    loadClientOutcomes();
     loadCertifications();
     loadProjects();
     loadSkills();
+    initializeMotionEffects();
 
     // Footer
     if (document.getElementById('footer-text')) document.getElementById('footer-text').textContent = siteContent.footer?.copyright || '';
@@ -71,6 +73,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+// Load anonymized client outcomes
+function loadClientOutcomes() {
+    const clientsGrid = document.getElementById('clients-grid');
+    if (!clientsGrid) return;
+    clientsGrid.innerHTML = '';
+    (siteContent.clientOutcomes || []).forEach((client, index) => clientsGrid.appendChild(createClientOutcomeCard(client, index)));
+}
+
+function createClientOutcomeCard(client, index) {
+    const card = document.createElement('details');
+    card.className = 'client-card fade-in';
+    if (index === 0) card.open = true;
+    card.innerHTML = `
+        <summary class="client-summary">
+            <span class="client-card-topline">
+                <span class="client-index">${String(index + 1).padStart(2, '0')}</span>
+                <span class="client-region">${client.region}</span>
+            </span>
+            <span class="client-summary-main">
+                <span class="client-sector">${client.sector}</span>
+                <span class="client-brief">${client.summary || client.result}</span>
+            </span>
+            <span class="client-toggle" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+        </summary>
+        <div class="client-details">
+            <div class="client-metrics">
+                ${(client.metrics || []).map(metric => `
+                    <div class="client-metric">
+                        <span class="metric-value">${metric.value}</span>
+                        <span class="metric-label">${metric.label}</span>
+                        <span class="metric-detail">${metric.detail}</span>
+                    </div>
+                `).join('')}
+            </div>
+            <dl class="client-star">
+                <div>
+                    <dt>Situation</dt>
+                    <dd>${client.situation}</dd>
+                </div>
+                <div>
+                    <dt>Task</dt>
+                    <dd>${client.task}</dd>
+                </div>
+                <div>
+                    <dt>Action</dt>
+                    <dd>${client.action}</dd>
+                </div>
+                <div class="client-result">
+                    <dt>Outcome</dt>
+                    <dd>${client.result}</dd>
+                </div>
+            </dl>
+        </div>
+    `;
+    return card;
+}
 
 // Load Certifications
 async function loadCertifications() {
@@ -136,6 +195,7 @@ function createProjectCard(project) {
     const imageContent = (project.image || '').startsWith('http') || (project.image || '').startsWith('data:')
         ? `<img src="${project.image}" alt="${title}">`
         : `<i class="fas fa-image"></i>`;
+    const linkTarget = (url) => (url || '').startsWith('#') ? '' : ' target="_blank" rel="noopener noreferrer"';
     card.innerHTML = `
         <div class="project-image">
             ${imageContent}
@@ -147,8 +207,8 @@ function createProjectCard(project) {
                 ${(technologies || []).map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
             </div>
             <div class="project-links">
-                ${project.links?.github ? `<a href="${project.links.github}" target="_blank" class="project-link"><i class="fab fa-github"></i> View Code</a>` : ''}
-                ${project.links?.live ? `<a href="${project.links.live}" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>` : ''}
+                ${project.links?.github ? `<a href="${project.links.github}"${linkTarget(project.links.github)} class="project-link"><i class="fab fa-github"></i> View Code</a>` : ''}
+                ${project.links?.live ? `<a href="${project.links.live}"${linkTarget(project.links.live)} class="project-link"><i class="fas fa-external-link-alt"></i> ${project.links.live.startsWith('#') ? 'Start Conversation' : 'Live Demo'}</a>` : ''}
             </div>
         </div>
     `;
@@ -220,6 +280,26 @@ contactForm?.addEventListener('submit', async (e) => {
 });
 
 // Intersection observer animations
-const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-const observer = new IntersectionObserver((entries, obs) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; obs.unobserve(entry.target); } }); }, observerOptions);
-document.querySelectorAll('.fade-in').forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out'; observer.observe(el); });
+function initializeMotionEffects() {
+    const animatedItems = document.querySelectorAll('.fade-in, .section-title, .section-subtitle, .about-profile-content, .about-text p, .contact-item, .contact-form');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        animatedItems.forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+
+    const observerOptions = { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.12 };
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    animatedItems.forEach((el, index) => {
+        el.classList.add('motion-reveal');
+        el.style.setProperty('--reveal-delay', `${Math.min(index % 8, 7) * 70}ms`);
+        observer.observe(el);
+    });
+}

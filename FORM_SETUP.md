@@ -1,6 +1,6 @@
 # Contact Form Setup Guide
 
-Your contact form is now configured to send emails to **meandyougtn@gmail.com**.
+Your contact form is now configured to send emails to **contact@ousseinioumarou.com**.
 
 ## 🚀 Quick Setup (Required)
 
@@ -21,13 +21,13 @@ Your contact form is now configured to send emails to **meandyougtn@gmail.com**.
 1. Open your website
 2. Go to the Contact section
 3. Fill out and submit the form
-4. Check your email (meandyougtn@gmail.com) for the message
+4. Check your email (contact@ousseinioumarou.com) for the message
 
 ## 📧 What Happens When Someone Contacts You
 
 1. **Visitor fills out the form** on your website
 2. **Formspree processes** the submission
-3. **Email is sent** to meandyougtn@gmail.com with:
+3. **Email is sent** to contact@ousseinioumarou.com with:
    - Sender's name and email
    - Subject line: "Portfolio Contact: [their subject]"
    - Their message
@@ -91,7 +91,6 @@ Your contact form includes:
 ---
 
 **Current Configuration:**
-- Email: meandyougtn@gmail.com
+- Email: contact@ousseinioumarou.com
 - Form Endpoint: [Update with your Formspree URL]
 - Status: Ready for Formspree setup
-
