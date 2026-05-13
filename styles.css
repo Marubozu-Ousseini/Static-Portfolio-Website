@@ -834,7 +834,7 @@ section {
 /* Certifications Section */
 .certifications-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--spacing-lg);
     margin-top: var(--spacing-2xl);
     padding: 0;
@@ -1150,9 +1150,10 @@ section {
 
 .project-outcome-metric {
     display: inline-flex;
-    align-items: baseline;
+    align-items: center;
     gap: var(--spacing-xs);
     width: fit-content;
+    max-width: 100%;
     min-height: 32px;
     margin: var(--spacing-xs) 0;
     padding: 0.28rem 0.55rem;
@@ -1173,6 +1174,7 @@ section {
     font-size: var(--font-size-xs);
     font-weight: 800;
     letter-spacing: 0.06em;
+    line-height: 1.15;
     text-transform: uppercase;
 }
 

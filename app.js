@@ -210,6 +210,7 @@ function createProjectCard(project) {
     const technologies = project.technologies;
     const outcome = project.outcome || inferProjectOutcome(project);
     const outcomePercent = project.outcomePercent || inferProjectOutcomePercent(project);
+    const outcomeLabel = project.outcomeLabel || inferProjectOutcomeLabel(project);
     const card = document.createElement('details');
     card.className = 'project-card fade-in';
     const imageContent = (project.image || '').startsWith('http') || (project.image || '').startsWith('data:')
@@ -225,7 +226,7 @@ function createProjectCard(project) {
                 <span class="project-title">${title}</span>
                 <span class="project-outcome-metric">
                     <span class="project-outcome-percent">${outcomePercent}</span>
-                    <span class="project-outcome-label">Outcome</span>
+                    <span class="project-outcome-label">${outcomeLabel}</span>
                 </span>
                 <span class="project-outcome">${outcome}</span>
             </span>
@@ -271,6 +272,18 @@ function inferProjectOutcomePercent(project) {
     if (text.includes('notification') || text.includes('alerts')) return '85%';
     if (text.includes('data lake') || text.includes('pipeline')) return '80%';
     return '75%';
+}
+
+function inferProjectOutcomeLabel(project) {
+    const text = `${project.title || ''} ${project.description || ''}`.toLowerCase();
+    if (text.includes('blue-green') || text.includes('zero-downtime')) return 'deployment risk reduced';
+    if (text.includes('readiness')) return 'wasted build spend avoided';
+    if (text.includes('chatbot')) return 'manual Q&A reduced';
+    if (text.includes('disaster recovery')) return 'uptime target';
+    if (text.includes('notification') || text.includes('alerts')) return 'manual alerting reduced';
+    if (text.includes('data lake') || text.includes('pipeline')) return 'data workflow automated';
+    if (text.includes('e-commerce')) return 'baseline cloud cost reduced';
+    return 'delivery efficiency gained';
 }
 
 // Load Skills
