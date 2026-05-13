@@ -189,10 +189,24 @@ function createCertificationCard(cert) {
 }
 
 function formatIssuedDate(value) {
-    if (!value || String(value).toLowerCase() === 'ongoing') return 'Ongoing';
-    const date = new Date(value);
+    const rawValue = String(value || '').trim();
+    if (!rawValue || rawValue.toLowerCase() === 'ongoing') return 'Ongoing';
+
+    const isoDateOnly = rawValue.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (isoDateOnly) {
+        const [, year, month, day] = isoDateOnly;
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const monthIndex = Number(month) - 1;
+        const dayNumber = Number(day);
+
+        if (monthIndex >= 0 && monthIndex < monthNames.length && dayNumber >= 1 && dayNumber <= 31) {
+            return `Issued ${monthNames[monthIndex]} ${dayNumber}, ${year}`;
+        }
+    }
+
+    const date = new Date(rawValue);
     if (Number.isNaN(date.getTime())) return String(value);
-    return 'Issued ' + date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+    return 'Issued ' + date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
 }
 
 // Load Projects

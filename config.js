@@ -139,7 +139,7 @@ window.siteContent = {
                 id: "AWS Cloud Quest",
                 name: "AWS Cloud Quest: Cloud Practitioner",
                 image_url: "https://images.credly.com/size/340x340/images/30816e43-2550-4e1c-be22-3f03c5573bb9/blob",
-                issued_at_date: "2025-05-17",
+                issued_at_date: "2023-05-17",
                 public_url: "https://www.credly.com/badges/f50319e4-db3b-42c0-8fbd-1bc1283ed689",
                 description: "Earners of this badge have demonstrated basic solution building knowledge using AWS services and have a fundamental understanding of AWS Cloud concepts. Badge earners have acquired hands-on experience with compute, networking, database and security services."
             }
