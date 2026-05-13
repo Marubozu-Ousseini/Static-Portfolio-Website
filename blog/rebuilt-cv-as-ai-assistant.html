@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I rebuilt my CV as an AI assistant. Here's the architecture, the cost, and what it taught me.</title>
+  <meta name="description" content="Static CVs are broken. Recruiters skim in seconds; candidates can't answer follow-up questions. So I replaced mine with Sensei, a conversational AI.">
+  <link rel="canonical" href="https://ousseinioumarou.com/blog/rebuilt-cv-as-ai-assistant.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="I rebuilt my CV as an AI assistant">
+  <meta property="og:description" content="Static CVs are broken. I replaced mine with Sensei — a conversational AI trained on my projects, skills, and decisions.">
+  <meta property="og:url" content="https://ousseinioumarou.com/blog/rebuilt-cv-as-ai-assistant.html">
+  <meta property="og:image" content="https://ousseinioumarou.com/images/blog-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://ousseinioumarou.com/blog/rebuilt-cv-as-ai-assistant.html"
+    },
+    "headline": "I rebuilt my CV as an AI assistant. Here's the architecture, the cost, and what it taught me.",
+    "description": "Static CVs are broken. I replaced mine with Sensei — a conversational AI trained on my projects, skills, and decisions.",
+    "image": ["https://ousseinioumarou.com/images/blog-banner.png"],
+    "author": {
+      "@type": "Person",
+      "name": "Ousseini Oumarou",
+      "url": "https://ousseinioumarou.com/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Ousseini Oumarou"
+    },
+    "datePublished": "2026-04-23",
+    "dateModified": "2026-04-23"
+  }
+  </script>
+</head>
+<body class="blog-post-page">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo"><h2><a href="/" style="color:inherit;text-decoration:none">Ousseini Oumarou</a></h2></div>
+      <div class="nav-menu">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/blog/" class="nav-link">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="blog-post-shell">
+    <article class="blog-article">
+      <header>
+        <h1 class="blog-post-title">I rebuilt my CV as an AI assistant. Here's the architecture, the cost, and what it taught me.</h1>
+        <p class="blog-post-subtitle">How I replaced the static resume with Sensei — a conversational AI that answers questions about my work in real time.</p>
+        <small>Published: <time datetime="2026-04-23">Apr 23, 2026</time></small>
+      </header>
+
+    <h2>The problem with static CVs</h2>
+    <p>Static CVs are broken. Recruiters skim in seconds; candidates can't answer follow-up questions. So I replaced mine with Sensei — a conversational AI trained on my projects, skills, and decisions. This post walks through the architecture, the prompt engineering, the cost model, and the three things I'd do differently if I built it again.</p>
+
+    <p>A PDF resume is a one-way broadcast. It can't answer "what was your role specifically?" or "how did you handle scaling?" The recruiter either guesses, moves on, or schedules a call to ask what the document should have answered. I wanted something that could handle those follow-ups instantly — without me being online.</p>
+
+    <h2>Architecture overview</h2>
+    <p>Sensei is a serverless application running entirely on AWS. Here's the stack:</p>
+
+    <pre>
+┌──────────────┐     ┌──────────────┐     ┌──────────────────┐
+│  Browser     │────▶│ API Gateway  │────▶│  AWS Lambda       │
+│  Chat Widget │     │ (REST)       │     │  (Node.js)        │
+└──────────────┘     └──────────────┘     └────────┬─────────┘
+                                                   │
+                                    ┌──────────────┼──────────────┐
+                                    ▼              ▼              ▼
+                              ┌──────────┐  ┌──────────┐  ┌────────────┐
+                              │ S3       │  │ DynamoDB  │  │ Bedrock    │
+                              │ RAG Store│  │ Sessions  │  │ (Llama 3)  │
+                              └──────────┘  └──────────┘  └────────────┘
+    </pre>
+
+    <p>The user types a question in the embedded chat widget. The request hits API Gateway, which invokes a Lambda function. Lambda does three things:</p>
+    <ol>
+      <li><strong>Retrieves context</strong> — A precomputed TF-IDF index over my project descriptions, skills, and career data sits in S3. The retriever scores the query against this index and pulls the top-k relevant chunks.</li>
+      <li><strong>Builds the prompt</strong> — The retrieved chunks are injected into a system prompt that constrains the model to only answer based on provided context, cite sources, and stay on-topic.</li>
+      <li><strong>Calls the LLM</strong> — AWS Bedrock (Llama 3) generates the response. DynamoDB tracks session state for multi-turn conversations.</li>
+    </ol>
+
+    <h2>Prompt design</h2>
+    <p>The system prompt is the most important part of this build. It does four things:</p>
+    <ul>
+      <li><strong>Persona constraint:</strong> "You are Sensei, an AI assistant that answers questions about Ousseini Oumarou's professional background." This prevents the model from wandering into general knowledge.</li>
+      <li><strong>Source grounding:</strong> "Only answer using the provided context. If the context doesn't contain the answer, say so." This eliminates hallucination about projects I never built.</li>
+      <li><strong>Tone calibration:</strong> Concise, professional, factual. No marketing language, no superlatives.</li>
+      <li><strong>Guardrails:</strong> Refuses personal questions, salary discussions, and off-topic queries. Redirects to LinkedIn or email for things the bot shouldn't handle.</li>
+    </ul>
+
+    <p>I spent more time tuning the system prompt than writing the Lambda function. The retriever picks the right context; the prompt decides what to do with it. Get the prompt wrong and you get a chatbot that confidently fabricates project details.</p>
+
+    <h2>The retrieval strategy</h2>
+    <p>I chose TF-IDF over vector embeddings for a specific reason: cost. Embedding models charge per token, and for a corpus this small (roughly 15 documents covering projects, skills, and certifications), TF-IDF gives perfectly adequate retrieval quality at zero marginal cost.</p>
+
+    <p>The index is precomputed at build time and stored as a JSON file in S3. At query time, the Lambda function loads the index, scores the query, and returns the top 3 chunks. Total retrieval time: under 50ms.</p>
+
+    <p>If the corpus grew to hundreds of documents, I'd switch to an embedding model (Titan Embeddings on Bedrock or a self-hosted model). But for a portfolio-sized knowledge base, TF-IDF is the right tool.</p>
+
+    <h2>Cost model</h2>
+    <p>This matters because "I built an AI chatbot" sounds expensive. It isn't.</p>
+    <ul>
+      <li><strong>Lambda:</strong> ~$0.20/month at current traffic (free tier covers most of it)</li>
+      <li><strong>API Gateway:</strong> ~$0.10/month</li>
+      <li><strong>S3:</strong> Negligible (a few KB of JSON)</li>
+      <li><strong>DynamoDB:</strong> On-demand pricing, ~$0.05/month</li>
+      <li><strong>Bedrock (Llama 3):</strong> ~$0.50-2.00/month depending on traffic. Input tokens are cheap; output tokens are the variable.</li>
+    </ul>
+    <p><strong>Total monthly cost: under $3.</strong> That's less than a single cup of coffee in Dubai. The serverless architecture means zero cost when nobody's asking questions, and it scales automatically when traffic spikes (like after posting on LinkedIn).</p>
+
+    <h2>Three things I'd do differently</h2>
+
+    <h3>1. Add streaming responses</h3>
+    <p>Currently, Sensei waits for the full LLM response before sending it to the client. This creates a noticeable delay (2-4 seconds) that feels slow in a chat interface. Streaming via WebSocket or Server-Sent Events would make the experience feel instant. API Gateway now supports WebSocket APIs, so this is straightforward to implement.</p>
+
+    <h3>2. Track which questions go unanswered</h3>
+    <p>When the retriever can't find relevant context, Sensei says "I don't have information about that." But I'm not logging these misses. If recruiters keep asking about a specific topic and getting no answer, that's a signal I need to add that content to the knowledge base. A simple CloudWatch metric on "no context found" responses would close this gap.</p>
+
+    <h3>3. A/B test the system prompt</h3>
+    <p>I iterated on the prompt manually, but I never ran structured experiments. Does a more conversational tone increase engagement? Does adding "ask me about X" suggestions at the end of responses drive follow-up questions? These are testable hypotheses that I should instrument.</p>
+
+    <h2>What this project demonstrates</h2>
+    <p>Sensei is a small project, but it touches every layer of a production AI system: data preparation, retrieval, prompt engineering, LLM integration, cost management, and user experience. It's live on my <a href="/">homepage</a> right now — try it by clicking the chat icon in the bottom-right corner.</p>
+
+    <p>If you're evaluating whether to build a similar internal assistant — for customer support, internal knowledge bases, or onboarding — the architecture is the same. The hard part isn't the infrastructure; it's the prompt design and retrieval quality. Get those right and the rest follows.</p>
+
+      <p>Questions or want to discuss a similar build? Reach out: <a href="mailto:contact@ousseinioumarou.com">contact@ousseinioumarou.com</a> · LinkedIn: <a href="https://www.linkedin.com/in/marubozu" target="_blank" rel="noopener">@marubozu</a></p>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>© 2026 Ousseini Oumarou. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

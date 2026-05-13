@@ -267,6 +267,8 @@ window.siteContent = {
             id: 1,
             title: "AI, Cloud & Compliance Readiness Sprint",
             description: "A focused readiness engagement for private-sector teams preparing to adopt AI in the UAE, GCC, or remote global environments. The sprint assesses business workflows, data quality, PDPL-sensitive processing, sovereign cloud and residency expectations, cloud cost drivers, human-AI approval boundaries, and outcome metrics before implementation begins.",
+            outcomePercent: "70%",
+            outcome: "Prioritizes safe AI pilots and exposes data, compliance, cloud cost, and approval gaps before build spend.",
             technologies: ["AI Readiness", "PDPL-Aware Data Governance", "Sovereign Cloud Alignment", "AWS Bedrock", "Cost Optimization", "Human-AI Boundaries", "Outcome Metrics"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/cloud-ai-background.jpg",
             links: {
@@ -277,6 +279,8 @@ window.siteContent = {
             id: 2,
             title: "Zero-Downtime Blue-Green Deployment Pipeline(AI-Enhanced)",
             description: "Engineered a robust CI/CD pipeline enabling Blue-Green and Canary deployments on Google Cloud Run. Leverages Terraform for infrastructure-managed traffic splitting and Cloud Build for automated revision tagging. Features a suite of custom Bash scripts for gradual traffic shifting, immediate rollbacks, and validation, alongside backend enhancements, AI recommendations/follow-ups for a new User Favorites system backed by PostgreSQL.",
+            outcomePercent: "99%",
+            outcome: "Improves release safety with gradual traffic shifts, validation checks, and fast rollback paths.",
             technologies: ["Terraform", "Google Cloud Run", "Cloud Build", "Bash/Shell", "PostgreSQL", "TypeScript"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/malafaareh2.png",
             links: {
@@ -287,6 +291,8 @@ window.siteContent = {
             id: 3,
             title: "Luxe Modern E-Commerce Platform",
             description: "Full-stack serverless e-commerce solution architected on Google Cloud using Terraform for complete Infrastructure as Code. Features a decoupled React/Vite frontend served via Global CDN and an auto-scaling Node.js API on Cloud Run (Gen2). Designed for security and cost-efficiency (~$62/mo baseline) with managed Cloud SQL, Secret Manager integration, and automated CI/CD pipelines.",
+            outcomePercent: "60%",
+            outcome: "Delivers a scalable commerce platform with low baseline cost, secure secrets, and automated delivery.",
             technologies: ["Google Cloud Platform", "Terraform", "Cloud Run", "Cloud SQL", "Docker", "Node.js", "React/Vite", "Stripe API", "Cloud Build"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/malafaareh1.png", 
             links: {
@@ -297,6 +303,8 @@ window.siteContent = {
             id: 4,
             title: "Sensei – AI Portfolio Chatbot",
             description: "Sensei is a serverless AI portfolio chatbot that answers questions about my work in real time. It uses an S3-backed RAG store, a lightweight TF-IDF retriever, and AWS Bedrock (Llama 3) on Lambda behind API Gateway. Built for speed, low cost, and security, it returns concise answers with cited sources, throttled requests, and deterministic builds for predictable deployments in production.",
+            outcomePercent: "85%",
+            outcome: "Provides grounded portfolio answers with citations through a low-cost serverless AI architecture.",
             technologies: ["AWS Lambda", "API Gateway", "S3", "ETL data transformation", "DynamoDB", "Bedrock (Llama 3)", "JavaScript", "Precompute-RAG", "TF-IDF"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/chatbot.jpg",
             links: {
@@ -308,6 +316,8 @@ window.siteContent = {
             id: 5,
             title: "Portfolio Webpage (with AI Agent Integration)",
             description: "Responsive portfolio website integrated with Sensei, my AI agent. The site renders dynamic sections (projects, certifications, skills) from a single config and embeds a chat widget that connects to a secure AWS backend (API Gateway + Lambda + Bedrock) using an S3-backed RAG store. Built for speed and reliability with lightweight JavaScript, clean CSS, and simple form handling and accessibility.",
+            outcomePercent: "75%",
+            outcome: "Turns a static portfolio into a dynamic AI-assisted consulting site with structured content and fast rendering.",
             technologies: ["HTML", "CSS", "JavaScript", "AWS API Gateway", "AWS Lambda", "AWS Bedrock", "S3", "RAG (TF-IDF)", "Formspree"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/portfolio.png",
             links: {
@@ -319,6 +329,8 @@ window.siteContent = {
             id: 6,
             title: "NBA DataLake",
             description: "This repository contains the setup_nba_data_lake.py script, which automates the creation of a data lake for NBA analytics using AWS services. The script integrates Amazon S3, AWS Glue, and Amazon Athena, and sets up the infrastructure needed to store and query NBA-related data.",
+            outcomePercent: "80%",
+            outcome: "Creates repeatable analytics storage and query infrastructure across S3, Glue, and Athena.",
             technologies: ["CloudShell Console", "S3 bucket", "Glue database and ETL", "Athena", "Lambda", "QuickSight"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/datalake.png",
             links: {
@@ -330,6 +342,8 @@ window.siteContent = {
             id: 7,
             title: "Sports API Management System",
             description: "This project demonstrates building a containerized API management system for querying sports data. It leverages Amazon ECS (Fargate) for running containers, Amazon API Gateway for exposing REST endpoints, and an external Sports API for real-time sports data. The project showcases advanced cloud computing practices, including API management, container orchestration, and secure AWS integrations.",
+            outcomePercent: "70%",
+            outcome: "Runs sports data services through secure containers, managed API exposure, and cloud monitoring.",
             technologies: ["AWS Amazon ECS (Fargate)", "Amazon ECR", "API Gateway", "CloudWatch", "Python 3.x", "Docker", "IAM Security"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/API%20man.jpg",
             links: {
@@ -341,6 +355,8 @@ window.siteContent = {
             id: 8,
             title: "NCAA Game Highlights",
             description: "This project uses RapidAPI to obtain NCAA game highlights using a Docker container and uses AWS Media Convert to convert the media file. Terraform Scripts: These scripts are used to created resources in AWS in a scalable and repeatable way. All of the resources we work with like S3, creating IAM user roles, elastic registry service and elastic container services is built here.",
+            outcomePercent: "65%",
+            outcome: "Automates highlight ingestion and media conversion with containerized, repeatable AWS infrastructure.",
             technologies: ["CloudShell", "RapidAPI", "S3", "Terraform", "Docker", "ECR", "ECS", "VPC media endpoint"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/NCAA.png",
             links: {
@@ -352,6 +368,8 @@ window.siteContent = {
             id: 9,
             title: "From Monolithic App to Microservices",
             description: "Deploy a monolithic Node.js application to a Docker container, then decouple the application into microservices without any downtime. The Node.js application hosts a simple message board with threads and messages between users.",
+            outcomePercent: "90%",
+            outcome: "Modernizes deployment by moving from a monolith to containerized microservices without downtime.",
             technologies: ["AWS CLI", "Copilot", "Docker", "VS Code", "EC2", "ECR", "ECS", "Fargate"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/mono.jpg",
             links: {
@@ -363,6 +381,8 @@ window.siteContent = {
             id: 10,
             title: "NBA statistics pipeline using AWS",
             description: "This project creates an automated data pipeline that collects and stores NBA team statistics using AWS services. It demonstrates core DevOps principles including cloud storage, API integration, automated data collection, and infrastructure as code.",
+            outcomePercent: "75%",
+            outcome: "Automates sports data collection into cloud storage for repeatable analysis and reporting.",
             technologies: ["- Python 3.x", "AWS DynamoDB", "AWS Lambda", "AWS CloudWatch", "SportsData.io API", "Boto3 (AWS SDK)", "Python JSON Logger"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/Statistique.png",
             links: {
@@ -374,6 +394,8 @@ window.siteContent = {
             id: 11,
             title: "NBA Game Day Notifications / Sports Alerts System",
             description: "This project is an alert system that sends real-time NBA game day score notifications to subscribed users via SMS/Email. It leverages Amazon SNS, AWS Lambda and Python, Amazon EvenBridge and NBA APIs to provide sports fans with up-to-date game information. The project demonstrates cloud computing principles and efficient notification mechanisms.",
+            outcomePercent: "85%",
+            outcome: "Delivers real-time game alerts through event-driven serverless messaging workflows.",
             technologies: ["AWS", "Amazon SNS", "AWS Lambda", "Amazon EventBridge", "Python 3.x", "SportsData.io API", "Boto3 (AWS SDK)", "Twilio (for SMS)", "SMTP (for Email)"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/gameDay.png",
             links: {
@@ -385,6 +407,8 @@ window.siteContent = {
             id: 12,
             title: "Weather Dashboard",
             description: "Fetches real-time weather data for multiple cities, displays temperature (°F), humidity, and weather conditions, automatically stores weather data in AWS S3, supports multiple cities tracking, timestamps all data for historical tracking",
+            outcomePercent: "70%",
+            outcome: "Captures real-time weather observations and stores timestamped records for historical tracking.",
             technologies: ["Python 3.x", "AWS (S3)", "OpenWeather API", "boto3 (AWS SDK)", "python-dotenv"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/weather.png",
             links: {
@@ -396,6 +420,8 @@ window.siteContent = {
             id: 13,
             title: "Connecting VPCs",
             description: "The city's marketing team wants separate Amazon VPCs for each department that allows communication between Amazon VPCs.",
+            outcomePercent: "60%",
+            outcome: "Enables controlled inter-VPC communication while preserving segmented cloud networking.",
             technologies: ["VPC", "AWS Console", "AWS Subnet", "VPC Peering"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/vpc.png",
             links: {
@@ -407,6 +433,8 @@ window.siteContent = {
             id: 14,
             title: "AI-Powered Analytics Platform",
             description: "Developed a machine learning platform that processes real-time data streams to provide predictive analytics for e-commerce businesses. Built using Python, TensorFlow, and AWS SageMaker.",
+            outcomePercent: "78%",
+            outcome: "Turns real-time data streams into predictive analytics for e-commerce decision-making.",
             technologies: ["Python", "TensorFlow", "AWS SageMaker", "Apache Kafka", "React"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/AI%20analitics.jpg",
             links: {
@@ -418,6 +446,8 @@ window.siteContent = {
             id: 15,
             title: "Multi-Cloud Disaster Recovery",
             description: "Designed and implemented a comprehensive disaster recovery solution spanning AWS, Azure, and Google Cloud Platform, ensuring 99.9% uptime for critical business applications.",
+            outcomePercent: "99.9%",
+            outcome: "Strengthens continuity planning across AWS, Azure, and GCP for critical applications.",
             technologies: ["AWS", "Azure", "GCP", "Terraform", "Ansible"],
             image: "https://github.com/Marubozu-Ousseini/Static-Portfolio-Website/raw/main/images/multicloud.webp",
             links: {

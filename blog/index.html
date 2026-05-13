@@ -15,9 +15,9 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="stylesheet" href="../styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="blog-page">
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-logo"><h2><a href="/" style="color:inherit;text-decoration:none">Ousseini Oumarou</a></h2></div>
@@ -28,28 +28,41 @@
     </div>
   </nav>
 
-  <main class="container" style="padding: 3rem 1rem; max-width: 900px;">
-    <figure style="margin:0 0 2rem 0;">
-      <img src="../images/blog-banner.png" alt="Blog banner — Ousseini Oumarou" style="max-width:100%;border-radius:12px;" width="1200" height="630">
-    </figure>
-    <h1 class="section-title">Blog</h1>
-    <p class="section-subtitle">Insights from cloud architecture, AI, and engineering practice.</p>
+  <main class="blog-home">
+    <section class="blog-home-hero" aria-labelledby="blog-title">
+      <div class="container blog-home-hero-inner">
+        <p class="blog-kicker">AI, Cloud, Compliance</p>
+        <h1 id="blog-title">Field Notes on AI Readiness and Cloud Architecture</h1>
+        <p>Practical essays on Agentic AI, sovereign cloud, data governance, compliance-aware delivery, and systems that survive real production pressure.</p>
+      </div>
+    </section>
 
-    <section style="margin-top:2rem">
-      <article class="project-card" style="padding:1.25rem">
-        <h2 style="margin:0 0 .5rem 0"><a href="/blog/uae-agentic-ai-readiness-consultancy.html">UAE Agentic AI Readiness Consultant: Readiness Before Autonomy</a></h2>
-        <p style="margin:0 0 .5rem 0;color:#64748b">A practical UAE and GCC guide to Agentic AI readiness assessment, process redesign, data governance, human-AI boundaries, upskilling, change management, and outcome measurement.</p>
-        <small>Published: <time datetime="2026-05-13">May 13, 2026</time></small>
+    <section class="container blog-feed" aria-label="Latest articles">
+      <article class="blog-card blog-card-featured">
+        <div class="blog-card-meta">
+          <span>AI Readiness</span>
+          <time datetime="2026-05-13">May 13, 2026</time>
+        </div>
+        <h2><a href="/blog/uae-agentic-ai-readiness-consultancy.html">UAE Agentic AI Readiness Consultant: Readiness Before Autonomy</a></h2>
+        <p>A practical UAE and GCC guide to Agentic AI readiness assessment, process redesign, data governance, human-AI boundaries, upskilling, change management, and outcome measurement.</p>
       </article>
-      <article class="project-card" style="padding:1.25rem">
-        <h2 style="margin:0 0 .5rem 0"><a href="/blog/introducing-ousseini.html">Introducing Ousseini Oumarou — AI & Cloud Consultant</a></h2>
-        <p style="margin:0 0 .5rem 0;color:#64748b">A quick overview of my background, core projects, and how I help private-sector teams adopt AI with compliant, cost-efficient cloud systems.</p>
-        <small>Published: <time datetime="2026-02-10">Feb 10, 2026</time></small>
+
+      <article class="blog-card">
+        <div class="blog-card-meta">
+          <span>Consulting</span>
+          <time datetime="2026-02-10">Feb 10, 2026</time>
+        </div>
+        <h2><a href="/blog/introducing-ousseini.html">Introducing Ousseini Oumarou — AI &amp; Cloud Consultant</a></h2>
+        <p>A quick overview of my background, core projects, and how I help private-sector teams adopt AI with compliant, cost-efficient cloud systems.</p>
       </article>
-      <article class="project-card" style="padding:1.25rem">
-        <h2 style="margin:0 0 .5rem 0"><a href="/blog/malafaareh-modern-ecommerce.html">Architecting Malafaareh — Modern E‑Commerce with AI on GCP Serverless</a></h2>
-        <p style="margin:0 0 .5rem 0;color:#64748b">GCP serverless architecture with Firebase deploy/auth, plus AI recommendations and customer follow‑ups.</p>
-        <small>Published: <time datetime="2026-02-10">Feb 10, 2026</time></small>
+
+      <article class="blog-card">
+        <div class="blog-card-meta">
+          <span>Cloud Architecture</span>
+          <time datetime="2026-02-10">Feb 10, 2026</time>
+        </div>
+        <h2><a href="/blog/malafaareh-modern-ecommerce.html">Architecting Malafaareh — Modern E-Commerce with AI on GCP Serverless</a></h2>
+        <p>GCP serverless architecture with Firebase deploy/auth, plus AI recommendations and customer follow-ups.</p>
       </article>
     </section>
   </main>

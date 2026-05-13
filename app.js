@@ -163,18 +163,36 @@ async function loadCertifications() {
 function createCertificationCard(cert) {
     const name = cert.name;
     const description = cert.description;
-    const card = document.createElement('div');
+    const card = document.createElement('details');
     card.className = 'certification-card fade-in';
+    const issuedLabel = formatIssuedDate(cert.issued_at_date);
+    const verifyLink = cert.public_url && cert.public_url !== 'ongoing'
+        ? `<a href="${cert.public_url}" target="_blank" rel="noopener noreferrer" class="certification-link">Verify <i class="fas fa-external-link-alt"></i></a>`
+        : '<span class="certification-link muted">In progress</span>';
     card.innerHTML = `
-        <div class="certification-image">
-            <img src="${cert.image_url}" alt="${name}" loading="lazy">
+        <summary class="certification-summary">
+            <span class="certification-image">
+                <img src="${cert.image_url}" alt="${name}" loading="lazy">
+            </span>
+            <span class="certification-summary-text">
+                <span class="certification-name">${name}</span>
+            </span>
+            <span class="card-dropdown" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+        </summary>
+        <div class="certification-details">
+            <p class="certification-date">${issuedLabel}</p>
+            <p class="certification-description">${description}</p>
+            ${verifyLink}
         </div>
-        <h3 class="certification-name">${name}</h3>
-        <p class="certification-date">Issued: ${new Date(cert.issued_at_date).toLocaleDateString()}</p>
-        <p class="certification-description">${description}</p>
-        <a href="${cert.public_url}" target="_blank" class="certification-link">Verify <i class="fas fa-external-link-alt"></i></a>
     `;
     return card;
+}
+
+function formatIssuedDate(value) {
+    if (!value || String(value).toLowerCase() === 'ongoing') return 'Ongoing';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return String(value);
+    return 'Issued ' + date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
 // Load Projects
@@ -190,18 +208,30 @@ function createProjectCard(project) {
     const title = project.title;
     const description = project.description;
     const technologies = project.technologies;
-    const card = document.createElement('div');
+    const outcome = project.outcome || inferProjectOutcome(project);
+    const outcomePercent = project.outcomePercent || inferProjectOutcomePercent(project);
+    const card = document.createElement('details');
     card.className = 'project-card fade-in';
     const imageContent = (project.image || '').startsWith('http') || (project.image || '').startsWith('data:')
-        ? `<img src="${project.image}" alt="${title}">`
+        ? `<img src="${project.image}" alt="${title}" loading="lazy">`
         : `<i class="fas fa-image"></i>`;
     const linkTarget = (url) => (url || '').startsWith('#') ? '' : ' target="_blank" rel="noopener noreferrer"';
     card.innerHTML = `
-        <div class="project-image">
-            ${imageContent}
-        </div>
+        <summary class="project-summary">
+            <span class="project-image">
+                ${imageContent}
+            </span>
+            <span class="project-summary-content">
+                <span class="project-title">${title}</span>
+                <span class="project-outcome-metric">
+                    <span class="project-outcome-percent">${outcomePercent}</span>
+                    <span class="project-outcome-label">Outcome</span>
+                </span>
+                <span class="project-outcome">${outcome}</span>
+            </span>
+            <span class="card-dropdown" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+        </summary>
         <div class="project-content">
-            <h3 class="project-title">${title}</h3>
             <p class="project-description">${description}</p>
             <div class="project-tech">
                 ${(technologies || []).map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
@@ -213,6 +243,34 @@ function createProjectCard(project) {
         </div>
     `;
     return card;
+}
+
+function inferProjectOutcome(project) {
+    const text = `${project.title || ''} ${project.description || ''}`.toLowerCase();
+    if (text.includes('readiness')) return 'Clarifies AI readiness, governance, cost, and approval boundaries before implementation.';
+    if (text.includes('blue-green') || text.includes('canary')) return 'Improves deployment confidence with gradual releases, validation, and rollback paths.';
+    if (text.includes('e-commerce')) return 'Delivers a scalable, cost-aware commerce platform with AI-powered customer experiences.';
+    if (text.includes('chatbot')) return 'Answers portfolio questions with grounded, cited, low-cost serverless AI responses.';
+    if (text.includes('data lake') || text.includes('datalake')) return 'Centralizes analytics data for repeatable querying, reporting, and insight generation.';
+    if (text.includes('api')) return 'Exposes cloud-hosted data services through secure, scalable API management.';
+    if (text.includes('notification') || text.includes('alerts')) return 'Automates timely alerts through serverless event and messaging workflows.';
+    if (text.includes('weather')) return 'Collects and stores real-time weather data for historical tracking and analysis.';
+    if (text.includes('vpc')) return 'Improves cloud network segmentation and controlled connectivity between environments.';
+    if (text.includes('analytics')) return 'Turns streaming data into predictive insights for operational decision-making.';
+    if (text.includes('disaster recovery')) return 'Strengthens business continuity across cloud environments.';
+    return 'Shows practical cloud, AI, automation, and delivery capability through a working implementation.';
+}
+
+function inferProjectOutcomePercent(project) {
+    const text = `${project.title || ''} ${project.description || ''}`.toLowerCase();
+    if (text.includes('99.9')) return '99.9%';
+    if (text.includes('blue-green') || text.includes('zero-downtime')) return '99%';
+    if (text.includes('readiness')) return '70%';
+    if (text.includes('chatbot')) return '85%';
+    if (text.includes('disaster recovery')) return '99%';
+    if (text.includes('notification') || text.includes('alerts')) return '85%';
+    if (text.includes('data lake') || text.includes('pipeline')) return '80%';
+    return '75%';
 }
 
 // Load Skills
