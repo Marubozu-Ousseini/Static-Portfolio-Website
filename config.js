@@ -529,11 +529,12 @@ window.siteContent = {
 // You can edit this list to customize the FAQs that appear when clicking the FAQ button in the widget header.
 window.siteContent.chatbot = window.siteContent.chatbot || {};
 window.siteContent.chatbot.faqs = window.siteContent.chatbot.faqs || [
-    'What are your key projects?',
-    'What AI/Machine Learning projects have you worked on?',
+    'Which AI and cloud projects are most relevant?',
+    'How do you help with UAE/GCC AI readiness and PDPL?',
+    'What client outcomes can you share?',
     'What certifications do you have?',
-    'What are your core skills?',
-    'Tell me about yourself',
+    'What are your core AI, cloud, and data skills?',
+    'Tell me about your consulting background',
     'How can I contact you?'
 ];
 
